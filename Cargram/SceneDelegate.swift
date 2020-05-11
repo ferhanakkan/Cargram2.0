@@ -8,16 +8,17 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let newScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: newScene)
+        selectRoot()
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -48,6 +49,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    private func selectRoot() {
+         /*   let currentUser = Auth.auth().currentUser
+            if let rememberMe = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
+                if currentUser != nil && rememberMe {
+                    window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
+                } else {
+                    window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
+                }
+                
+            } else {
+                window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
+            }*/
+            
+            window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
+        }
 
 }
 

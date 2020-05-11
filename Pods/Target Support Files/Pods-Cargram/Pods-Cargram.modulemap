@@ -1,0 +1,6 @@
+framework module Pods_Cargram {
+  umbrella header "Pods-Cargram-umbrella.h"
+
+  export *
+  module * { export * }
+}

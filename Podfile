@@ -1,0 +1,26 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Cargram' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+   pod 'RealmSwift'
+   pod 'PromisesSwift'
+   pod 'Alamofire', '5.0.0-rc.2'
+   pod 'IQKeyboardManagerSwift', '6.5.0'
+   pod 'Kingfisher', '5.8.1'
+   pod 'SnapKit', '5.0.1'
+   pod 'Firebase/Analytics'
+   pod 'Firebase/Auth'
+   pod 'Firebase/Core'
+   pod 'Firebase/Firestore'
+   pod 'Firebase/Storage'
+   pod 'Firebase/Messaging'
+   pod 'Fabric', '~> 1.10.2'
+   pod 'Firebase/Crashlytics'
+   pod 'BEMCheckBox'
+
+
+  # Pods for Cargram
+
+end
