@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		361D670B2469BAA9006B8036 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D670A2469BAA9006B8036 /* AuthViewController.swift */; };
+		361D670D2469BAB5006B8036 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D670C2469BAB5006B8036 /* AuthViewModel.swift */; };
+		361D67102469BADF006B8036 /* RegisterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D670F2469BADF006B8036 /* RegisterCollectionViewCell.swift */; };
+		361D67122469BAEC006B8036 /* LogInCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D67112469BAEC006B8036 /* LogInCollectionViewCell.swift */; };
+		361D67142469BAFF006B8036 /* ForgotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361D67132469BAFF006B8036 /* ForgotCollectionViewCell.swift */; };
 		366A4F3F246979AD00A1850E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366A4F3E246979AD00A1850E /* BaseViewController.swift */; };
 		366A4F4224697AB200A1850E /* TestScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366A4F4124697AB200A1850E /* TestScreenViewController.swift */; };
 		366A4F442469831F00A1850E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 366A4F432469831F00A1850E /* GoogleService-Info.plist */; };
@@ -31,11 +36,17 @@
 		36A7CE4524694F1100A890F0 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7CE4424694F1100A890F0 /* UIImageView.swift */; };
 		36A7CE482469505900A890F0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7CE472469505900A890F0 /* LoadingView.swift */; };
 		36A7CE4B246950CD00A890F0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7CE4A246950CD00A890F0 /* AlertView.swift */; };
+		36ADC00D2469F4E50065A681 /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ADC00C2469F4E50065A681 /* CellProtocol.swift */; };
 		C876B2CCEAD96B3F8FD80209 /* Pods_Cargram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F687AE78B5F22D6D48650DB /* Pods_Cargram.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1F687AE78B5F22D6D48650DB /* Pods_Cargram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cargram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		361D670A2469BAA9006B8036 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		361D670C2469BAB5006B8036 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		361D670F2469BADF006B8036 /* RegisterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCollectionViewCell.swift; sourceTree = "<group>"; };
+		361D67112469BAEC006B8036 /* LogInCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInCollectionViewCell.swift; sourceTree = "<group>"; };
+		361D67132469BAFF006B8036 /* ForgotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotCollectionViewCell.swift; sourceTree = "<group>"; };
 		366A4F3E246979AD00A1850E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		366A4F4124697AB200A1850E /* TestScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScreenViewController.swift; sourceTree = "<group>"; };
 		366A4F432469831F00A1850E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -63,6 +74,7 @@
 		36A7CE4424694F1100A890F0 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		36A7CE472469505900A890F0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		36A7CE4A246950CD00A890F0 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		36ADC00C2469F4E50065A681 /* CellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
 		9B45B1009D9F31B5114813E1 /* Pods-Cargram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cargram.debug.xcconfig"; path = "Target Support Files/Pods-Cargram/Pods-Cargram.debug.xcconfig"; sourceTree = "<group>"; };
 		F7A8967A75A875ECD47B2BE1 /* Pods-Cargram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cargram.release.xcconfig"; path = "Target Support Files/Pods-Cargram/Pods-Cargram.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +91,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		361D67092469BA98006B8036 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				361D670E2469BABC006B8036 /* CollectionView Cell's */,
+				361D670A2469BAA9006B8036 /* AuthViewController.swift */,
+				361D670C2469BAB5006B8036 /* AuthViewModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		361D670E2469BABC006B8036 /* CollectionView Cell's */ = {
+			isa = PBXGroup;
+			children = (
+				361D670F2469BADF006B8036 /* RegisterCollectionViewCell.swift */,
+				361D67112469BAEC006B8036 /* LogInCollectionViewCell.swift */,
+				361D67132469BAFF006B8036 /* ForgotCollectionViewCell.swift */,
+				36ADC00C2469F4E50065A681 /* CellProtocol.swift */,
+			);
+			path = "CollectionView Cell's";
+			sourceTree = "<group>";
+		};
 		366A4F3B2469797B00A1850E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +130,7 @@
 		366A4F3D2469798900A1850E /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				361D67092469BA98006B8036 /* Auth */,
 				366A4F4024697AA000A1850E /* TestScreen */,
 			);
 			path = Scene;
@@ -417,21 +451,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				36A7CE25246946F400A890F0 /* Tabbar.swift in Sources */,
+				361D67142469BAFF006B8036 /* ForgotCollectionViewCell.swift in Sources */,
 				36A7CE302469483900A890F0 /* UIApplication.swift in Sources */,
 				36A7CE062469455F00A890F0 /* AppDelegate.swift in Sources */,
 				36A7CE322469487700A890F0 /* UIButton.swift in Sources */,
+				361D67102469BADF006B8036 /* RegisterCollectionViewCell.swift in Sources */,
 				366A4F4224697AB200A1850E /* TestScreenViewController.swift in Sources */,
 				36A7CE342469490100A890F0 /* UIDate.swift in Sources */,
 				36A7CE082469455F00A890F0 /* SceneDelegate.swift in Sources */,
+				36ADC00D2469F4E50065A681 /* CellProtocol.swift in Sources */,
 				36A7CE3E24694D3000A890F0 /* Donate.swift in Sources */,
 				366A4F3F246979AD00A1850E /* BaseViewController.swift in Sources */,
 				36A7CE4124694D5600A890F0 /* SideBar.swift in Sources */,
 				36A7CE482469505900A890F0 /* LoadingView.swift in Sources */,
+				361D67122469BAEC006B8036 /* LogInCollectionViewCell.swift in Sources */,
 				36A7CE272469472600A890F0 /* NavigationBar.swift in Sources */,
+				361D670B2469BAA9006B8036 /* AuthViewController.swift in Sources */,
 				36A7CE3A24694CC800A890F0 /* AppManager.swift in Sources */,
 				36A7CE2E246947C600A890F0 /* UIView.swift in Sources */,
 				36A7CE3724694C8400A890F0 /* Reachability.swift in Sources */,
 				36A7CE4B246950CD00A890F0 /* AlertView.swift in Sources */,
+				361D670D2469BAB5006B8036 /* AuthViewModel.swift in Sources */,
 				366A4F472469912D00A1850E /* AppDelegatePushNotifications.swift in Sources */,
 				36A7CE2C246947AC00A890F0 /* UIColor.swift in Sources */,
 				36A7CE4524694F1100A890F0 /* UIImageView.swift in Sources */,

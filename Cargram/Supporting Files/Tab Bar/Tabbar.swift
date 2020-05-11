@@ -14,7 +14,7 @@ class Tabbar {
         
         let tabController = UITabBarController()
 
-        let explore = TestScreenViewController()
+        let explore = AuthViewController()
         let profilePage = TestScreenViewController()
         let forum = TestScreenViewController()
         

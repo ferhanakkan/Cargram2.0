@@ -12,6 +12,7 @@ struct AppManager {
     
     static var shared = AppManager()
     
+    //MARK: - Internet Connection
     let reachability: Reachability = try! Reachability(hostname: "google.com")
 
     func setReachability() {
@@ -21,19 +22,22 @@ struct AppManager {
             assertionFailure("Unable to start\nnotifier")
         }
 
-       reachability.whenUnreachable = { reachability in
-            let alert = UIAlertController(title: "Your internet connection has been lost!", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Retry", style: .cancel, handler: { action in
-                if self.reachability.connection == .unavailable {
-                    UIApplication.getPresentedViewController()!.present(alert, animated: true, completion: nil)
-                }
-            }))
-            alert.addAction(UIAlertAction(title: "Quit", style: .default, handler: { action in
-                exit(0)
-            }))
-            UIApplication.getPresentedViewController()!.present(alert, animated: true, completion: nil)
+        reachability.whenUnreachable = { reachability in
+            if self.reachability.connection == .unavailable {
+                self.messagePresent(title: "Internet Connection Lost", message: "Please retry again", type: .error, isInternet: .isInternetAlert)
+            }
         }
     }
+    
+    func checkInternetStatus() {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                if self.reachability.connection == .unavailable {
+                self.messagePresent(title: "Internet Connection Lost", message: "Please retry again", type: .error, isInternet: .isInternetAlert)
+            }
+        }
+    }
+    
+    //MARK: - Custom Alert
     
     func messagePresent(title: String, message: String, type: ImageType, isInternet: InternetAlert) {
         let vc = AlertView()
@@ -41,6 +45,7 @@ struct AppManager {
         vc.messagelabel.text = message
         vc.imageTypeSelector = type
         vc.internetConnectionButtonSelector = isInternet
+        vc.modalPresentationStyle = .overFullScreen
         UIApplication.getPresentedViewController()!.present(vc, animated: true)
     }
 }
