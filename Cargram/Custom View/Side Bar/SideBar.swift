@@ -18,8 +18,9 @@ protocol SidebarViewDelegate: class {
 enum Row: String {
     case editProfile
     case settings
-    case rate
     case vin
+    case carDetail
+    case rate
     case donate
     case signOut
     case none
@@ -28,10 +29,11 @@ enum Row: String {
         switch row {
         case 0: self = .editProfile
         case 1: self = .settings
-        case 2: self = .rate
+        case 2: self = .carDetail
         case 3: self = .vin
-        case 4: self = .donate
-        case 5: self = .signOut
+        case 4: self = .rate
+        case 5: self = .donate
+        case 6: self = .signOut
         default: self = .none
         }
     }
@@ -40,6 +42,7 @@ enum Row: String {
 class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
 
     var titleArr = [String]()
+    var imageNameArray = [String]()
     
     weak var delegate: SidebarViewDelegate?
 
@@ -48,8 +51,8 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.backgroundColor = .backgroundGreen
         self.clipsToBounds=true
         
-        titleArr = ["\(Auth.auth().currentUser?.displayName! ?? "Profile")","Settings","Rate Us", "Baby Names (Upcoming)","Donate", "Sign Out"]
-        
+        titleArr = ["\(Auth.auth().currentUser?.displayName! ?? "Profile")","Settings","Car Details", "Vin Code","Rate Us", "Donate", "Sign Out"]
+        imageNameArray = ["Settings","car","vincode","rate","donate","signOut"]
         setupViews()
         
         myTableView.delegate=self
@@ -97,9 +100,19 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
             cellLbl.font=UIFont.systemFont(ofSize: 17)
             cellLbl.textColor=UIColor.gray
         } else {
-            cell.textLabel?.text=titleArr[indexPath.row]
-            cell.textLabel?.textColor=UIColor.gray
-        }
+            cell.backgroundColor = .backgroundGreen
+            
+            let cellImg: UIImageView!
+            cellImg = UIImageView(frame: CGRect(x: 15, y: cell.frame.height/2-15, width: 30, height: 30))
+            cellImg.contentMode = .scaleAspectFit
+            cellImg.image = UIImage(named: imageNameArray[indexPath.row-1])
+            cell.addSubview(cellImg)
+
+            let cellLbl = UILabel(frame: CGRect(x: 55, y: cell.frame.height/2-15, width: 250, height: 30))
+            cell.addSubview(cellLbl)
+            cellLbl.text = titleArr[indexPath.row]
+            cellLbl.font=UIFont.systemFont(ofSize: 17)
+            cellLbl.textColor=UIColor.gray        }
         return cell
     }
     

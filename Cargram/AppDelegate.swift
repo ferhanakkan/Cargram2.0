@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 
 @UIApplicationMain
@@ -19,12 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AppManager.shared.setReachability()
         firebase(application)
+        setKeyboard()
         
         if #available(iOS 12.0, *) {
             self.window = UIWindow(frame: UIScreen.main.bounds)
             self.selectRoot()
             self.window?.makeKeyAndVisible()
         }
+            
         return true
     }
 
@@ -57,8 +60,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
         }*/
         
-        window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
+        window?.rootViewController = Tabbar.createTabBarWithNavigationBar()
     }
 
+    private func setKeyboard() {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+    }
 }
 

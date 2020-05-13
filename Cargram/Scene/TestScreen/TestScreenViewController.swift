@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TestScreenViewController: UIViewController {
+class TestScreenViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red

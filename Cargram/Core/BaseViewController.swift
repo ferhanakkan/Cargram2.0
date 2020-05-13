@@ -102,27 +102,30 @@ extension BaseViewController: SidebarViewDelegate {
             self.sidebarView.frame=CGRect(x: 0, y: 0, width: 0, height: self.sidebarView.frame.height)
         }
         switch row {
+            
         case .editProfile, .settings:
-//            if Auth.auth().currentUser != nil {
-//                let vc = SettingViewController()
-//                vc.hidesBottomBarWhenPushed = true
-//                navigationController?.show(vc, sender: nil)
-//            } else {
-//                let vc = SplashViewController()
-//                vc.hidesBottomBarWhenPushed = true
-//                navigationController?.show(vc, sender: nil)
-//            }
+            //            if Auth.auth().currentUser != nil {
+                            let vc = SettingViewController()
+                            vc.hidesBottomBarWhenPushed = true
+                            navigationController?.show(vc, sender: nil)
+            //            } else {
+            //                let vc = SplashViewController()
+            //                vc.hidesBottomBarWhenPushed = true
+            //                navigationController?.show(vc, sender: nil)
+            //            }
             print("duzelt")
         case .rate:
             SKStoreReviewController.requestReview()
         case .vin:
             print("Vin is coming")
+        case .carDetail:
+            print("car detail")
         case .donate:
             let vc = DonateViewController()
             vc.modalPresentationStyle = .overFullScreen
             present(vc, animated: true, completion: nil)
         case .signOut:
-//            firebaseUser.signOut()
+            //            firebaseUser.signOut()
             print("signout")
         case .none:
             break

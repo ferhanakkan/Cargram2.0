@@ -27,6 +27,8 @@ class LogInColletionViewCell: UICollectionViewCell {
     
     var delegate: CollectionViewIndexSelector?
     
+    let firebase = FirebaseUserService()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setMainView()
@@ -84,6 +86,7 @@ extension LogInColletionViewCell {
         passwordInput.placeholder = "Password"
         passwordInput.isSecureTextEntry = true
         passwordInput.borderStyle = .roundedRect
+        passwordInput.isSecureTextEntry = true
     }
     
     private func setEye() {
@@ -191,7 +194,9 @@ extension LogInColletionViewCell {
         if emailInput.text == "" || passwordInput.text == "" {
             AppManager.shared.messagePresent(title: "OOOPS", message: "Please enter your E-mail or Password please", type: .error, isInternet: .nonInternetAlert)
         } else {
-            //firebase action
+            firebase.logIn(email: emailInput.text!, password: passwordInput.text!) { (_) in
+                self.window?.rootViewController = TestScreenViewController()
+            }
         }
     }
     

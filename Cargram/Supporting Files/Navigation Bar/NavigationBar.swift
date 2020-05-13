@@ -11,11 +11,7 @@ import Firebase
 
 class NavigationBar {
     
-    class func createNavigatonController(owner: Any) -> UINavigationController{
-            return NavigationBar.navigationBarSplash()
-    }
-
-    class func navigationBarSplash() -> UINavigationController {
+    class func createNavigatonController() -> UINavigationController {
         let navigationController = UINavigationController()
         navigationController.navigationBar.isTranslucent = false
         navigationController.navigationBar.barTintColor = UIColor.backgroundGreen

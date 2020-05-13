@@ -37,6 +37,10 @@
 		36A7CE482469505900A890F0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7CE472469505900A890F0 /* LoadingView.swift */; };
 		36A7CE4B246950CD00A890F0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7CE4A246950CD00A890F0 /* AlertView.swift */; };
 		36ADC00D2469F4E50065A681 /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ADC00C2469F4E50065A681 /* CellProtocol.swift */; };
+		36ADC011246A9F290065A681 /* FirebaseUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ADC010246A9F290065A681 /* FirebaseUserService.swift */; };
+		36ADC015246B4A7A0065A681 /* UITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ADC014246B4A7A0065A681 /* UITextfield.swift */; };
+		36BCA12D246C53E00050A7A5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCA12C246C53E00050A7A5 /* SettingsViewController.swift */; };
+		36BCA12F246C53ED0050A7A5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCA12E246C53ED0050A7A5 /* SettingsViewModel.swift */; };
 		C876B2CCEAD96B3F8FD80209 /* Pods_Cargram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F687AE78B5F22D6D48650DB /* Pods_Cargram.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +79,10 @@
 		36A7CE472469505900A890F0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		36A7CE4A246950CD00A890F0 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		36ADC00C2469F4E50065A681 /* CellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
+		36ADC010246A9F290065A681 /* FirebaseUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserService.swift; sourceTree = "<group>"; };
+		36ADC014246B4A7A0065A681 /* UITextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextfield.swift; sourceTree = "<group>"; };
+		36BCA12C246C53E00050A7A5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		36BCA12E246C53ED0050A7A5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		9B45B1009D9F31B5114813E1 /* Pods-Cargram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cargram.debug.xcconfig"; path = "Target Support Files/Pods-Cargram/Pods-Cargram.debug.xcconfig"; sourceTree = "<group>"; };
 		F7A8967A75A875ECD47B2BE1 /* Pods-Cargram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cargram.release.xcconfig"; path = "Target Support Files/Pods-Cargram/Pods-Cargram.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +138,7 @@
 		366A4F3D2469798900A1850E /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				36BCA12A246C53830050A7A5 /* Settings */,
 				361D67092469BA98006B8036 /* Auth */,
 				366A4F4024697AA000A1850E /* TestScreen */,
 			);
@@ -166,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				366A4F452469850000A1850E /* Cargram.entitlements */,
+				36ADC00E246A9F070065A681 /* Service */,
 				366A4F3D2469798900A1850E /* Scene */,
 				366A4F3C2469798300A1850E /* Core */,
 				366A4F3B2469797B00A1850E /* Model */,
@@ -253,6 +263,7 @@
 				36A7CE312469487700A890F0 /* UIButton.swift */,
 				36A7CE332469490100A890F0 /* UIDate.swift */,
 				36A7CE4424694F1100A890F0 /* UIImageView.swift */,
+				36ADC014246B4A7A0065A681 /* UITextfield.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -314,6 +325,31 @@
 				36A7CE4A246950CD00A890F0 /* AlertView.swift */,
 			);
 			path = "Error Success View";
+			sourceTree = "<group>";
+		};
+		36ADC00E246A9F070065A681 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				36ADC00F246A9F160065A681 /* Firebase */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		36ADC00F246A9F160065A681 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				36ADC010246A9F290065A681 /* FirebaseUserService.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		36BCA12A246C53830050A7A5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				36BCA12C246C53E00050A7A5 /* SettingsViewController.swift */,
+				36BCA12E246C53ED0050A7A5 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		56CCB8F07D73286556997BEC /* Pods */ = {
@@ -451,6 +487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36A7CE25246946F400A890F0 /* Tabbar.swift in Sources */,
+				36ADC011246A9F290065A681 /* FirebaseUserService.swift in Sources */,
 				361D67142469BAFF006B8036 /* ForgotCollectionViewCell.swift in Sources */,
 				36A7CE302469483900A890F0 /* UIApplication.swift in Sources */,
 				36A7CE062469455F00A890F0 /* AppDelegate.swift in Sources */,
@@ -465,6 +502,7 @@
 				36A7CE4124694D5600A890F0 /* SideBar.swift in Sources */,
 				36A7CE482469505900A890F0 /* LoadingView.swift in Sources */,
 				361D67122469BAEC006B8036 /* LogInCollectionViewCell.swift in Sources */,
+				36BCA12F246C53ED0050A7A5 /* SettingsViewModel.swift in Sources */,
 				36A7CE272469472600A890F0 /* NavigationBar.swift in Sources */,
 				361D670B2469BAA9006B8036 /* AuthViewController.swift in Sources */,
 				36A7CE3A24694CC800A890F0 /* AppManager.swift in Sources */,
@@ -472,6 +510,8 @@
 				36A7CE3724694C8400A890F0 /* Reachability.swift in Sources */,
 				36A7CE4B246950CD00A890F0 /* AlertView.swift in Sources */,
 				361D670D2469BAB5006B8036 /* AuthViewModel.swift in Sources */,
+				36BCA12D246C53E00050A7A5 /* SettingsViewController.swift in Sources */,
+				36ADC015246B4A7A0065A681 /* UITextfield.swift in Sources */,
 				366A4F472469912D00A1850E /* AppDelegatePushNotifications.swift in Sources */,
 				36A7CE2C246947AC00A890F0 /* UIColor.swift in Sources */,
 				36A7CE4524694F1100A890F0 /* UIImageView.swift in Sources */,

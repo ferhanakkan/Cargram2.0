@@ -19,6 +19,8 @@ class ForgotColletionViewCell: UICollectionViewCell {
     let bottomLabel = UILabel()
     let logInButton = UIButton()
     
+    let firebase = FirebaseUserService()
+    
     var delegate: CollectionViewIndexSelector?
     
     override init(frame: CGRect) {
@@ -58,6 +60,8 @@ extension ForgotColletionViewCell {
         title.numberOfLines = 0
         title.text = "We will send you a mail to reset your password"
         title.font = UIFont.boldSystemFont(ofSize: 20)
+        title.textAlignment = .center
+        title.textColor = .black
     }
     
     private func setMailInput() {
@@ -66,9 +70,19 @@ extension ForgotColletionViewCell {
             make.top.equalTo(title.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(40)
         }
-        mailInput.placeholder = "E-mail"
+        
         mailInput.borderStyle = .roundedRect
+        mailInput.backgroundColor = .white
+        mailInput.updatePlaceHolder("E-mail", color: UIColor.gray.withAlphaComponent(0.45))
+        if #available(iOS 13.0, *) {
+            mailInput.layer.borderColor = UIColor.gray.resolvedColor(with: mailInput.traitCollection).cgColor
+        }
+//        mailInput.layer.cornerRadius = 8.0
+//        mailInput.layer.masksToBounds = true
+//        mailInput.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.45).cgColor
+//        mailInput.layer.borderWidth = 1.0
     }
     
     private func setResetButton() {
@@ -83,6 +97,7 @@ extension ForgotColletionViewCell {
         resetButton.setTitleColor(.white, for: .normal)
         resetButton.backgroundColor = .gray
         resetButton.titleLabel?.font = .boldSystemFont(ofSize: 15)
+        resetButton.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
         
     }
     
@@ -95,6 +110,7 @@ extension ForgotColletionViewCell {
         }
         bottomLabel.text = "Did you remember your password?"
         bottomLabel.numberOfLines = 0
+        bottomLabel.textColor = .black
     }
     
     private func setLogInButton() {
@@ -116,12 +132,14 @@ extension ForgotColletionViewCell {
 
 extension ForgotColletionViewCell {
     @objc func resetButtonPressed() {
-        if mailInput.text != "" {
+        if mailInput.text == "" {
             AppManager.shared.messagePresent(title: "OOOPS", message: "You didn't enter any e-mail", type: .error, isInternet: .nonInternetAlert)
         } else {
-            // firebase action !!!
+            firebase.resetPassword(email: mailInput.text!) { (_) in
+                self.delegate?.selectedCollectionViewIndex(row: 1)
+            }
         }
-
+        mailInput.text = ""
     }
     
     @objc func logInButtonPressed() {

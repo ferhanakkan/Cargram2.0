@@ -62,7 +62,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
             }*/
             
-            window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
+            window?.rootViewController = Tabbar.createTabBarWithNavigationBar()
         }
 
 }

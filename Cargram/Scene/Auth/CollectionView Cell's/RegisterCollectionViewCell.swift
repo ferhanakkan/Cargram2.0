@@ -27,6 +27,8 @@ class RegisterColletionViewCell: UICollectionViewCell {
     
     var delegate: CollectionViewIndexSelector?
     
+    let firebase = FirebaseUserService()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setMainView()
@@ -83,6 +85,7 @@ extension RegisterColletionViewCell {
         passwordInput.placeholder = "Password"
         passwordInput.isSelected = true
         passwordInput.borderStyle = .roundedRect
+        passwordInput.isSecureTextEntry = true
     }
     
     private func setEye() {
@@ -192,7 +195,9 @@ extension RegisterColletionViewCell {
         if emailInput.text == "" || passwordInput.text == "" || usernameInput.text == "" {
             AppManager.shared.messagePresent(title: "OOOPS", message: "Please enter your E-mail or Password please", type: .error, isInternet: .nonInternetAlert)
         } else {
-            //firebase action
+            firebase.createUser(email: emailInput.text!, password: passwordInput.text!, username: usernameInput.text!) { (_) in
+                self.window?.rootViewController = TestScreenViewController()
+            }
         }
     }
     

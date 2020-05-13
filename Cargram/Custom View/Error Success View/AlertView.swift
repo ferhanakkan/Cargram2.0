@@ -61,7 +61,6 @@ final class AlertView: UIViewController {
         }
         
         imageView.contentMode = .scaleToFill
-        
         imageTypeSelector == .error ? (imageView.image = #imageLiteral(resourceName: "alert") ): (imageView.image = #imageLiteral(resourceName: "success"))
         
     }
@@ -90,7 +89,7 @@ final class AlertView: UIViewController {
         }
         messagelabel.textAlignment = .center
         messagelabel.font = UIFont.systemFont(ofSize: 15)
-        titleLabel.numberOfLines = 0
+        messagelabel.numberOfLines = 0
     }
     
     private func setOkButton() {
