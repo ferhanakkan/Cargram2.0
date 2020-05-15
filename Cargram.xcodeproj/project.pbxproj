@@ -64,6 +64,11 @@
 		36BCA163246E03490050A7A5 /* CategoryEmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCA162246E03490050A7A5 /* CategoryEmptyTableViewCell.swift */; };
 		36BCA166246E08E60050A7A5 /* NewTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCA165246E08E60050A7A5 /* NewTopicViewController.swift */; };
 		36BCA168246E08F60050A7A5 /* NewTopicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCA167246E08F60050A7A5 /* NewTopicViewModel.swift */; };
+		36BCA16B246E920C0050A7A5 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCA16A246E920C0050A7A5 /* MessageViewController.swift */; };
+		36BCA16D246E92180050A7A5 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCA16C246E92180050A7A5 /* MessageViewModel.swift */; };
+		36BCA170246E995A0050A7A5 /* TitleTopiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCA16F246E995A0050A7A5 /* TitleTopiceTableViewCell.swift */; };
+		36BCA172246E996B0050A7A5 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCA171246E996B0050A7A5 /* MessageTableViewCell.swift */; };
+		36BCA174246EE9F10050A7A5 /* FirebaseImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCA173246EE9F10050A7A5 /* FirebaseImageService.swift */; };
 		C876B2CCEAD96B3F8FD80209 /* Pods_Cargram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F687AE78B5F22D6D48650DB /* Pods_Cargram.framework */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +134,11 @@
 		36BCA162246E03490050A7A5 /* CategoryEmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEmptyTableViewCell.swift; sourceTree = "<group>"; };
 		36BCA165246E08E60050A7A5 /* NewTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTopicViewController.swift; sourceTree = "<group>"; };
 		36BCA167246E08F60050A7A5 /* NewTopicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTopicViewModel.swift; sourceTree = "<group>"; };
+		36BCA16A246E920C0050A7A5 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		36BCA16C246E92180050A7A5 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		36BCA16F246E995A0050A7A5 /* TitleTopiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTopiceTableViewCell.swift; sourceTree = "<group>"; };
+		36BCA171246E996B0050A7A5 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		36BCA173246EE9F10050A7A5 /* FirebaseImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseImageService.swift; sourceTree = "<group>"; };
 		9B45B1009D9F31B5114813E1 /* Pods-Cargram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cargram.debug.xcconfig"; path = "Target Support Files/Pods-Cargram/Pods-Cargram.debug.xcconfig"; sourceTree = "<group>"; };
 		F7A8967A75A875ECD47B2BE1 /* Pods-Cargram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cargram.release.xcconfig"; path = "Target Support Files/Pods-Cargram/Pods-Cargram.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -391,6 +401,7 @@
 				36ADC010246A9F290065A681 /* FirebaseUserService.swift */,
 				36BCA13A246D63310050A7A5 /* FirebaseExploreService.swift */,
 				36BCA153246DE4340050A7A5 /* FirebaseForumService.swift */,
+				36BCA173246EE9F10050A7A5 /* FirebaseImageService.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -483,6 +494,7 @@
 		36BCA15A246DFBEE0050A7A5 /* Category Topics */ = {
 			isa = PBXGroup;
 			children = (
+				36BCA169246E91F90050A7A5 /* Message */,
 				36BCA164246E08D30050A7A5 /* New Topic */,
 				36BCA15F246DFD960050A7A5 /* Category Topic Cell */,
 				36BCA15B246DFC150050A7A5 /* CategoryTopicsViewController.swift */,
@@ -507,6 +519,25 @@
 				36BCA167246E08F60050A7A5 /* NewTopicViewModel.swift */,
 			);
 			path = "New Topic";
+			sourceTree = "<group>";
+		};
+		36BCA169246E91F90050A7A5 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				36BCA16E246E99450050A7A5 /* Message Cells */,
+				36BCA16A246E920C0050A7A5 /* MessageViewController.swift */,
+				36BCA16C246E92180050A7A5 /* MessageViewModel.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		36BCA16E246E99450050A7A5 /* Message Cells */ = {
+			isa = PBXGroup;
+			children = (
+				36BCA16F246E995A0050A7A5 /* TitleTopiceTableViewCell.swift */,
+				36BCA171246E996B0050A7A5 /* MessageTableViewCell.swift */,
+			);
+			path = "Message Cells";
 			sourceTree = "<group>";
 		};
 		56CCB8F07D73286556997BEC /* Pods */ = {
@@ -648,6 +679,7 @@
 				361D67142469BAFF006B8036 /* ForgotCollectionViewCell.swift in Sources */,
 				36BCA144246D74360050A7A5 /* ExploreDetailTitleCollectionViewCell.swift in Sources */,
 				36BCA154246DE4340050A7A5 /* FirebaseForumService.swift in Sources */,
+				36BCA170246E995A0050A7A5 /* TitleTopiceTableViewCell.swift in Sources */,
 				36BCA166246E08E60050A7A5 /* NewTopicViewController.swift in Sources */,
 				36BCA148246D74C00050A7A5 /* ExploreDetailViewController.swift in Sources */,
 				36A7CE302469483900A890F0 /* UIApplication.swift in Sources */,
@@ -660,9 +692,11 @@
 				366A4F4224697AB200A1850E /* TestScreenViewController.swift in Sources */,
 				36A7CE342469490100A890F0 /* UIDate.swift in Sources */,
 				36BCA142246D740C0050A7A5 /* ExploreDetailCollectionViewCell.swift in Sources */,
+				36BCA174246EE9F10050A7A5 /* FirebaseImageService.swift in Sources */,
 				36A7CE082469455F00A890F0 /* SceneDelegate.swift in Sources */,
 				36ADC00D2469F4E50065A681 /* CellProtocol.swift in Sources */,
 				36A7CE3E24694D3000A890F0 /* Donate.swift in Sources */,
+				36BCA172246E996B0050A7A5 /* MessageTableViewCell.swift in Sources */,
 				366A4F3F246979AD00A1850E /* BaseViewController.swift in Sources */,
 				36BCA146246D74550050A7A5 /* ExploreDetailVideoCollectionViewCell.swift in Sources */,
 				36A7CE4124694D5600A890F0 /* SideBar.swift in Sources */,
@@ -670,6 +704,7 @@
 				36BCA13E246D66BC0050A7A5 /* ExploreCollectionViewCell.swift in Sources */,
 				361D67122469BAEC006B8036 /* LogInCollectionViewCell.swift in Sources */,
 				36BCA12F246C53ED0050A7A5 /* SettingsViewModel.swift in Sources */,
+				36BCA16B246E920C0050A7A5 /* MessageViewController.swift in Sources */,
 				36A7CE272469472600A890F0 /* NavigationBar.swift in Sources */,
 				361D670B2469BAA9006B8036 /* AuthViewController.swift in Sources */,
 				36BCA134246D5F810050A7A5 /* ExploreDetailModel.swift in Sources */,
@@ -688,6 +723,7 @@
 				36BCA131246D5F5B0050A7A5 /* ExploreModel.swift in Sources */,
 				36BCA152246D94ED0050A7A5 /* ForumCategoryTableViewCell.swift in Sources */,
 				36ADC015246B4A7A0065A681 /* UITextfield.swift in Sources */,
+				36BCA16D246E92180050A7A5 /* MessageViewModel.swift in Sources */,
 				366A4F472469912D00A1850E /* AppDelegatePushNotifications.swift in Sources */,
 				36BCA159246DE4C60050A7A5 /* MessageModel.swift in Sources */,
 				36BCA13B246D63310050A7A5 /* FirebaseExploreService.swift in Sources */,

@@ -29,6 +29,17 @@ final class CategoryTopicsViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newTitleButtonPressed))
+    }
+    
+    @objc private func newTitleButtonPressed() {
+        let vc = NewTopicViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc,animated: true)
+    }
 }
 
 //MARK: - Setup UI
@@ -66,7 +77,9 @@ extension CategoryTopicsViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        categoryTopicsViewModel.setSelectedCategory(indexPath: indexPath.row)
+        let vc = MessageViewController()
+        navigationController?.show(vc, sender: nil)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

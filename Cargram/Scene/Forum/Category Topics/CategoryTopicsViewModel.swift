@@ -22,8 +22,6 @@ final class CategoryTopicsViewModel {
     }
     
     func setSelectedCategory(indexPath: Int) {
-//        AppManager.shared.selectedForumCategory = topicsModel[indexPath].title
-//
-//        UIApplication.getPresentedViewController()?.navigationController?.show(<#T##vc: UIViewController##UIViewController#>, sender: <#T##Any?#>)
+        AppManager.shared.selectedForumTopic = topicsModel[indexPath].title
     }
 }

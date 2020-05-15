@@ -33,7 +33,7 @@ struct AppManager {
     }
     
     func checkInternetStatus() {
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+1) {
                 if self.reachability.connection == .unavailable {
                 self.messagePresent(title: "Internet Connection Lost", message: "Please retry again", type: .error, isInternet: .isInternetAlert)
             }

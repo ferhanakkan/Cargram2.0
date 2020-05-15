@@ -49,7 +49,7 @@ final class FirebaseForumService {
         }
     }
     
-    internal func createTopicTitle(title: String, subtitle: String, usernameController:Bool, selectedCategory: String, completion: @escaping(Bool) -> Void) {
+    internal func createTopicTitle(title: String, subtitle: String, usernameController:Bool, completion: @escaping(Bool) -> Void) {
         let fireStoreDatabase = Firestore.firestore()
         var username = ""
         if usernameController {
@@ -63,12 +63,12 @@ final class FirebaseForumService {
             "Subtitle": subtitle,
             "Time": Date().timeIntervalSince1970
         ]
-        fireStoreDatabase.collection("TopicDatas").document("Data").collection(selectedCategory).document(title).collection("Message").addDocument(data: docData) { err in
+        fireStoreDatabase.collection("TopicDatas").document("Data").collection(AppManager.shared.selectedForumCategory).document(title).collection("Message").addDocument(data: docData) { err in
             if let err = err {
                 AppManager.shared.messagePresent(title: "OOPS", message: err.localizedDescription , type: .error, isInternet: .nonInternetAlert)
             }
         }
-        fireStoreDatabase.collection("Topics").document("Data").collection(selectedCategory).document(title).setData(docData) { err in
+        fireStoreDatabase.collection("Topics").document("Data").collection(AppManager.shared.selectedForumCategory).document(title).setData(docData) { err in
             if let err = err {
                 AppManager.shared.messagePresent(title: "OOPS", message: err.localizedDescription , type: .error, isInternet: .nonInternetAlert)
             } else {
@@ -82,7 +82,7 @@ final class FirebaseForumService {
     
     internal func getSelectedTopicMessage(completion: @escaping([MessageModel]) -> Void) {
         let fireStoreDatabase = Firestore.firestore()
-        fireStoreDatabase.collection("TopicDatas").document("Data").collection(AppManager.shared.selectedForumCategory).document(AppManager.shared.selectedForumTopic).collection("Message").addSnapshotListener { (snapshot, error) in
+        fireStoreDatabase.collection("TopicDatas").document("Data").collection(AppManager.shared.selectedForumCategory).document(AppManager.shared.selectedForumTopic).collection("Message").order(by: "Time").addSnapshotListener { (snapshot, error) in
             if error != nil {
                 AppManager.shared.messagePresent(title: "OOPS", message: error!.localizedDescription , type: .error, isInternet: .nonInternetAlert)
             } else {
@@ -96,9 +96,10 @@ final class FirebaseForumService {
                     }
                     DispatchQueue.main.async {
                         completion(self.messageArray)
-                        //                        owner.tableView?.reloadData()
+                        self.delegate?.messageFetched()
                         if !self.messageArray.isEmpty {
-                            //                            owner.tableView?.scrollToRow(at: IndexPath(row: 0, section: self.messageArray.count-1), at: .bottom, animated: true)
+                            self.delegate?.scrollToLastMessage(toRow: self.messageArray.count-1)
+                           
                         }
                     }
                 }
@@ -126,5 +127,6 @@ final class FirebaseForumService {
 }
 
 protocol MessageDidArrived {
-    func messageFetched(toRow: Int)
+    func messageFetched()
+    func scrollToLastMessage(toRow: Int)
 }
