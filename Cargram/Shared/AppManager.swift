@@ -12,6 +12,9 @@ struct AppManager {
     
     static var shared = AppManager()
     
+    var selectedForumCategory = ""
+    var selectedForumTopic = ""
+    
     //MARK: - Internet Connection
     let reachability: Reachability = try! Reachability(hostname: "google.com")
 

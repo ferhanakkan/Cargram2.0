@@ -14,8 +14,10 @@ struct FirebaseUserService {
     func resetPassword(email: String, completion: @escaping(Bool) -> Void) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
+                LoadingView.hide()
                 AppManager.shared.messagePresent(title: "OOOPS", message: error.localizedDescription, type: .error, isInternet: .nonInternetAlert)
             } else {
+                LoadingView.hide()
                 AppManager.shared.messagePresent(title: "Success", message: "Reset Password Succesful, check your mailbox.", type: .success, isInternet: .nonInternetAlert)
                 completion(true)
             }
@@ -25,8 +27,10 @@ struct FirebaseUserService {
     func logIn(email: String , password: String, completion: @escaping(Bool) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
+                LoadingView.hide()
                 AppManager.shared.messagePresent(title: "OOOOPS", message: error.localizedDescription, type: .error, isInternet: .nonInternetAlert)
             } else {
+                LoadingView.hide()
                 completion(false)
             }
         }
@@ -48,6 +52,7 @@ struct FirebaseUserService {
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
         changeRequest?.displayName = username
         changeRequest?.commitChanges { (error) in
+            LoadingView.hide()
             completion(true)
         }
     }
@@ -59,7 +64,9 @@ struct FirebaseUserService {
             try firebaseAuth.signOut()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
+            LoadingView.hide()
         }
+        LoadingView.hide()
         UIApplication.getPresentedViewController()?.view.window?.rootViewController = Tabbar.createTabBarWithNavigationBar()
     }
     

@@ -135,6 +135,7 @@ extension ForgotColletionViewCell {
         if mailInput.text == "" {
             AppManager.shared.messagePresent(title: "OOOPS", message: "You didn't enter any e-mail", type: .error, isInternet: .nonInternetAlert)
         } else {
+            LoadingView.show()
             firebase.resetPassword(email: mailInput.text!) { (_) in
                 self.delegate?.selectedCollectionViewIndex(row: 1)
             }

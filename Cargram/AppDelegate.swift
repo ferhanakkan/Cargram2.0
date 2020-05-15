@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import Firebase
 
 
 @UIApplicationMain
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppManager.shared.setReachability()
         firebase(application)
         setKeyboard()
+        autoLogIn()
         
         if #available(iOS 12.0, *) {
             self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -66,6 +68,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setKeyboard() {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+    }
+    
+    private func autoLogIn() {
+                
+        if let rememberData = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
+            if !rememberData {
+                let firebaseAuth = Auth.auth()
+                do {
+                    try firebaseAuth.signOut()
+                } catch let signOutError as NSError {
+                    print ("Error signing out: %@", signOutError)
+                }
+            }
+        }
     }
 }
 

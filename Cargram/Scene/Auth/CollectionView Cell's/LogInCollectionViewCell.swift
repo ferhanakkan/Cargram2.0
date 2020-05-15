@@ -194,8 +194,9 @@ extension LogInColletionViewCell {
         if emailInput.text == "" || passwordInput.text == "" {
             AppManager.shared.messagePresent(title: "OOOPS", message: "Please enter your E-mail or Password please", type: .error, isInternet: .nonInternetAlert)
         } else {
+            LoadingView.show()
             firebase.logIn(email: emailInput.text!, password: passwordInput.text!) { (_) in
-                self.window?.rootViewController = TestScreenViewController()
+                self.window?.rootViewController = Tabbar.createTabBarWithNavigationBar()
             }
         }
     }

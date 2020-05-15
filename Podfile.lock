@@ -380,9 +380,16 @@ PODS:
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
+  - PromiseKit (6.13.1):
+    - PromiseKit/CorePromise (= 6.13.1)
+    - PromiseKit/Foundation (= 6.13.1)
+    - PromiseKit/UIKit (= 6.13.1)
+  - PromiseKit/CorePromise (6.13.1)
+  - PromiseKit/Foundation (6.13.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.13.1):
+    - PromiseKit/CorePromise
   - PromisesObjC (1.2.8)
-  - PromisesSwift (1.2.8):
-    - PromisesObjC (= 1.2.8)
   - Protobuf (3.11.4)
   - Realm (4.4.1):
     - Realm/Headers (= 4.4.1)
@@ -404,7 +411,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - IQKeyboardManagerSwift (= 6.5.0)
   - Kingfisher (= 5.8.1)
-  - PromisesSwift
+  - PromiseKit (~> 6.8)
   - RealmSwift
   - SnapKit (= 5.0.1)
 
@@ -440,8 +447,8 @@ SPEC REPOS:
     - Kingfisher
     - leveldb-library
     - nanopb
+    - PromiseKit
     - PromisesObjC
-    - PromisesSwift
     - Protobuf
     - Realm
     - RealmSwift
@@ -478,13 +485,13 @@ SPEC CHECKSUMS:
   Kingfisher: de969e451c81ca6c07a454bc36fea84b8b08c3c7
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
+  PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
-  PromisesSwift: 37bad6f4daddb02f7c9c531efe91e8b21c13ee2f
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
   RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: c73498cb8f9fcb860c845bc12d28ec5e83afa6f0
+PODFILE CHECKSUM: f4eb25c14c550ba36f7162c0ee8c3b7750297423
 
 COCOAPODS: 1.9.1

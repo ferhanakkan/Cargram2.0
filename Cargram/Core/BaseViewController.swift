@@ -16,14 +16,14 @@ class BaseViewController: UIViewController  {
     var sidebarView: SidebarView!
     var blackScreen: UIView!
     
+    let firebase = FirebaseUserService()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
             self.imageSetter()
         }
     }
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,16 +104,15 @@ extension BaseViewController: SidebarViewDelegate {
         switch row {
             
         case .editProfile, .settings:
-            //            if Auth.auth().currentUser != nil {
-                            let vc = SettingViewController()
-                            vc.hidesBottomBarWhenPushed = true
-                            navigationController?.show(vc, sender: nil)
-            //            } else {
-            //                let vc = SplashViewController()
-            //                vc.hidesBottomBarWhenPushed = true
-            //                navigationController?.show(vc, sender: nil)
-            //            }
-            print("duzelt")
+            if Auth.auth().currentUser != nil {
+                let vc = SettingViewController()
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.show(vc, sender: nil)
+            } else {
+                let vc = AuthViewController()
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.show(vc, sender: nil)
+            }
         case .rate:
             SKStoreReviewController.requestReview()
         case .vin:
@@ -125,8 +124,7 @@ extension BaseViewController: SidebarViewDelegate {
             vc.modalPresentationStyle = .overFullScreen
             present(vc, animated: true, completion: nil)
         case .signOut:
-            //            firebaseUser.signOut()
-            print("signout")
+            firebase.signOut()
         case .none:
             break
             //        default:  //Default will never be executed

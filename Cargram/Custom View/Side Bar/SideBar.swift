@@ -45,6 +45,13 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
     var imageNameArray = [String]()
     
     weak var delegate: SidebarViewDelegate?
+    
+    let myTableView: UITableView = {
+        let table=UITableView()
+        table.translatesAutoresizingMaskIntoConstraints=false
+        return table
+    }()
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,6 +70,14 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
         myTableView.bounces=false
         myTableView.showsVerticalScrollIndicator=false
         myTableView.backgroundColor = UIColor.clear
+    }
+    
+    func setupViews() {
+        self.addSubview(myTableView)
+        myTableView.topAnchor.constraint(equalTo: topAnchor).isActive=true
+        myTableView.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
+        myTableView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
+        myTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,21 +142,7 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
             return 60
         }
     }
-    
-    func setupViews() {
-        self.addSubview(myTableView)
-        myTableView.topAnchor.constraint(equalTo: topAnchor).isActive=true
-        myTableView.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
-        myTableView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
-        myTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
-    }
-    
-    let myTableView: UITableView = {
-        let table=UITableView()
-        table.translatesAutoresizingMaskIntoConstraints=false
-        return table
-    }()
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -4,8 +4,8 @@
 target 'Cargram' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+   pod 'PromiseKit', '~> 6.8'
    pod 'RealmSwift'
-   pod 'PromisesSwift'
    pod 'Alamofire', '5.0.0-rc.2'
    pod 'IQKeyboardManagerSwift', '6.5.0'
    pod 'Kingfisher', '5.8.1'
@@ -19,8 +19,6 @@ target 'Cargram' do
    pod 'Fabric', '~> 1.10.2'
    pod 'Firebase/Crashlytics'
    pod 'BEMCheckBox'
-
-
   # Pods for Cargram
 
 end
