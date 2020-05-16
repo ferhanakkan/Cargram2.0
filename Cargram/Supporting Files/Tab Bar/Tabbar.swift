@@ -22,8 +22,8 @@ class Tabbar {
             
             let explore = ExploreViewController()
             let meeting = TestScreenViewController()
-            let posts = TestScreenViewController()
-            let todo = TestScreenViewController()
+            let posts = ToDoDetailImageShowViewController()
+            let todo = ToDoViewController()
             let forum = ForumViewController()
             
             explore.title = "Explore"
@@ -54,7 +54,7 @@ class Tabbar {
             let explore = ExploreViewController()
             let meeting = AuthViewController()
             let posts = AuthViewController()
-            let todo = AuthViewController()
+            let todo = ToDoViewController()
             let forum = AuthViewController()
             
             explore.title = "Explore"

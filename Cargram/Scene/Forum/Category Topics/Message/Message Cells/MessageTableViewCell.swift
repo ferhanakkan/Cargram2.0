@@ -30,7 +30,7 @@ class MessageTableViewCell: UITableViewCell {
                 rightImageView.isHidden = false
                 leftImageView.isHidden = true
                 messageLabel.text = message!.title
-                writenByLabel.text = "Writen By:\(message!.username)"
+                writenByLabel.text = "Writen By: \(message!.username)"
                 if let data = UserDefaults.standard.value(forKey: "profileImage") as? Data{
                     rightImageView.image = UIImage(data: data)
                 }
@@ -39,7 +39,7 @@ class MessageTableViewCell: UITableViewCell {
                 messageLabel.textAlignment = .left
                 rightImageView.isHidden = true
                 leftImageView.isHidden = false
-                writenByLabel.text = "Writen By:\(message!.username)"
+                writenByLabel.text = "Writen By: \(message!.username)"
                 messageLabel.text = message!.title
                 firebase.getOtherUsersImage(username: message!.username) { (data) in
                     self.leftImageView.image = UIImage(data: data)
