@@ -12,6 +12,15 @@ import UserNotifications
 
 extension AppDelegate {
     
+    func setLocalePushNotification() {
+        let notificationCenter = UNUserNotificationCenter.current()
+        
+        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
+            if let error = error {
+                print(error)
+            }
+        }
+    }
         
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
       // If you are receiving a notification message while your app is in the background,

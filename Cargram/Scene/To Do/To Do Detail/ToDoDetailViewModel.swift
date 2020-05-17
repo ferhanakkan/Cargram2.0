@@ -41,6 +41,15 @@ struct ToDoDetailViewModel {
                 print("Error saving done status, \(error)")
             }
     }
+    
+    func setDatas() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        dateFormatter.timeZone = .autoupdatingCurrent
+        let text = dateFormatter.string(from: Date(timeIntervalSince1970: toDoSelectedArray!.deathline))
+        return text
+    }
 }
 
 protocol DidToDoChanged {

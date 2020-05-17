@@ -42,6 +42,7 @@ final class ToDoCreateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        toDoCreateViewModel.center.delegate = self
     }
 }
 
@@ -155,8 +156,9 @@ extension ToDoCreateViewController {
     
     private func setDatePicker() {
         datePicker.datePickerMode = .dateAndTime
-        datePicker.timeZone = NSTimeZone.local
+        datePicker.timeZone = .current
         datePicker.backgroundColor = .white
+        datePicker.locale = .current
         let calendar = Calendar(identifier: .gregorian)
         var comps = DateComponents()
         comps.month = 12
@@ -168,8 +170,6 @@ extension ToDoCreateViewController {
         datePicker.minimumDate = minDate
 
     }
-    
-    
     
     private func setCancelButton() {
         mainSubview.addSubview(cancelButton)
@@ -209,7 +209,7 @@ extension ToDoCreateViewController {
 extension ToDoCreateViewController {
     
     @objc private func createPressed() {
-        toDoCreateViewModel.createTopic(title: titleTextfield.text!, subTitle: subTitleTextfield.text!, selectedDate: dateTextfield.text!) { (_) in
+        toDoCreateViewModel.createTopic(title: titleTextfield.text!, subTitle: subTitleTextfield.text!, selectedDate: datePicker.date) { (_) in
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -224,6 +224,7 @@ extension ToDoCreateViewController {
     
     @objc func pickerDoneButton(_ button: UIBarButtonItem?) {
         dateTextfield.resignFirstResponder()
+        toDoCreateViewModel.didDateShow = true
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.short
         dateFormatter.timeStyle = DateFormatter.Style.short

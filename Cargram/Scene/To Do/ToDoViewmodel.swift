@@ -48,15 +48,20 @@ final class ToDoViewModel {
             return cell
         default:
             let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "ToDoCollectionViewCell", for: indexPath) as! ToDoCollectionViewCell
-            if todoArray[indexPath.row].picArray.count != 0 {
-                cell.image.image = UIImage(data: todoArray[indexPath.row].picArray[0])
+            let selected = todoArray[indexPath.row]
+            if selected.picArray.count != 0 {
+                cell.image.image = UIImage(data: selected.picArray[0])
             } else {
                 cell.backgroundColor = .gray
             }
-            cell.isCompletedImage.isHidden = !(todoArray[indexPath.row].toDoCompletted)
-            cell.title.text = todoArray[indexPath.row].toDoTitle
-            cell.subTitle.text = todoArray[indexPath.row].toDoDescription
+            cell.isCompletedImage.isHidden = !(selected.toDoCompletted)
+            cell.title.text = selected.toDoTitle
+            cell.subTitle.text = selected.toDoDescription
+            if selected.toDoDateShow {
+                cell.endTime = selected.deathline
+            }
             return cell
         }
     }
 }
+

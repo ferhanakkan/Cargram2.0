@@ -12,7 +12,7 @@ import PromiseKit
 
 
 final class ToDoViewController: BaseViewController {
-    
+        
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 5, right: 5)

@@ -87,7 +87,9 @@ class ToDoDetailViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        setDatas()
+        DispatchQueue.main.async {
+            self.setDatas()
+        }
     }
     
     func setDatas() {
@@ -95,10 +97,12 @@ class ToDoDetailViewController : UIViewController {
         image.image = UIImage(data: object!.picArray[0])
         titleLabel.text = object!.toDoTitle
         descriptionLabel.text = object!.toDoDescription
-        if object!.deathline! == "" {
-            endTimeLabel.isHidden = true
+        if object!.toDoDateShow {
+            let text = toDoDetailViewModel.setDatas()
+            endTimeLabel.text = "Deadline: \(text)"
+            
         } else {
-            endTimeLabel.text = "Deadline: \(object!.deathline!)"
+            endTimeLabel.isHidden = true
         }
         
         object!.toDoCompletted ? (completeButton.setTitle("Set Uncompleted", for: .normal)) : (completeButton.setTitle("Set Completed", for: .normal))

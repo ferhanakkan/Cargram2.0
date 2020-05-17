@@ -66,6 +66,14 @@ final class ToDoCollectionViewCell: UICollectionViewCell {
         title.textColor = .white
         return title
     }()
+    
+    var endTime: Double? = nil {
+        didSet {
+            timeLabel.text = timeToDeathLine()
+        }
+    }
+    
+    var timer:Timer?
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -90,7 +98,7 @@ final class ToDoCollectionViewCell: UICollectionViewCell {
         
         timeSubView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().inset(10)
         }
         
         timeLabel.snp.makeConstraints { (make) in
@@ -120,8 +128,55 @@ final class ToDoCollectionViewCell: UICollectionViewCell {
         
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension ToDoCollectionViewCell {
+
+    @objc func timeCounter()
+    {
+        let currentTime = Double(Date().timeIntervalSince1970)
+        let calculatedTime = Int(endTime! - currentTime)
+        let minute = 60
+        let sec = calculatedTime % minute
+        let min = calculatedTime / minute
+        timeLabel.text = "\(min) min \(sec) sec left"
+        
+        if calculatedTime <= 1 {
+            timer?.invalidate()
+            timeLabel.text = "End Time Ended"
+        }
+    }
+
+    
+    func timeToDeathLine() -> String{
+        let currentTime = Double(Date().timeIntervalSince1970)
+        let calculatedTime = Int(endTime! - currentTime)
+        let minute = 60
+        let hour = 60 * minute
+        let day = 24 * hour
+        let week = 7 * day
+        let month = 30 * day
+        
+        if calculatedTime <= 0{
+            return "End Time Ended"
+        } else if calculatedTime < minute {
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timeCounter), userInfo: nil, repeats: true)
+            return "\(Int(calculatedTime)) second left"
+        } else if calculatedTime < hour {
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timeCounter), userInfo: nil, repeats: true)
+            return "\(calculatedTime/minute) minute left"
+        } else if calculatedTime < day {
+            return "\(calculatedTime/hour) hour left"
+        } else if calculatedTime < week {
+            return "\(calculatedTime/day) day left"
+        } else if calculatedTime < month {
+            return "\(calculatedTime/week) week left"
+        } else {
+            return "\(calculatedTime/month) month left"
+        }
+    }
+
 }

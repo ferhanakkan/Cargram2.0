@@ -13,5 +13,7 @@ class ToDoRealmModel: Object {
     @objc dynamic var toDoDescription: String?
     @objc dynamic var toDoCompletted = false
     let picArray = List<Data>()
-    @objc dynamic var deathline: String?
+    @objc dynamic var deathline: Double = 0.0
+    @objc dynamic var toDoDateShow = false
+    
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
 
 protocol ToDoCreated {
     func todoCreated()
@@ -17,12 +18,16 @@ final class ToDoCreateViewModel {
     
     var dataArray: [Data] = []
     var delegate: ToDoCreated?
+    var didDateShow = false
     
     func deleteImage(index: Int) {
         dataArray.remove(at: index)
     }
     
-    func createTopic(title: String, subTitle: String, selectedDate: String? = nil, completion: @escaping(Bool) -> Void) {
+    var center = UNUserNotificationCenter.current()
+
+    
+    func createTopic(title: String, subTitle: String, selectedDate: Date? = nil, completion: @escaping(Bool) -> Void) {
         if title != "" && subTitle != "" {
             let object = ToDoRealmModel()
             object.toDoTitle = title
@@ -34,12 +39,16 @@ final class ToDoCreateViewModel {
                     object.picArray.append(data)
                 }
             }
-            object.deathline = selectedDate
+            
+            let time = Double(selectedDate!.timeIntervalSince1970)
+            object.deathline = time
+            object.toDoDateShow = didDateShow
             
             let realm = try! Realm()
             do {
                 try realm.write {
                     realm.add(object)
+                    self.createNotfications(title: title, time: time)
                 }
             } catch {
                 AppManager.shared.messagePresent(title: "OPPS", message: "Plan didn't saved", type: .error, isInternet: .nonInternetAlert)
@@ -150,5 +159,49 @@ extension ToDoCreateViewModel {
         
 }
 
+
+//MARK: - LocalPushNotification
+
+extension ToDoCreateViewModel {
+    
+    func createNotfications(title: String, time: Double) {
+        // CONTENT
+        let content = UNMutableNotificationContent()
+        content.title = "Did You Finish Your To Do Which is :"
+//        content.subtitle = "Bildirimin altbaşlığı"
+        content.body = "\(title)"
+        content.sound = UNNotificationSound.default // bildirimin sesi
+        content.badge = NSNumber(value: 0)
+        
+        // TRIGGER
+        
+        // Define Action
+        let snoozeAction = UNNotificationAction(identifier: "Snooze", title: "Snooze", options: [])
+        let deleteAction = UNNotificationAction(identifier: "DeleteAction", title: "Delete", options: [.destructive])
+        
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
+        
+        let date = Date(timeIntervalSince1970: time)
+        let triggerDate = Calendar.current.dateComponents([.year,.month, .day, .hour, .hour, .minute, .second], from: date)
+        let dateTrigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+        
+        //Create Category
+        let category = UNNotificationCategory(identifier: "ToDoCategory", actions: [snoozeAction,deleteAction], intentIdentifiers: [], options: [])
+        
+        // Register Category
+        center.setNotificationCategories([category])
+        content.categoryIdentifier = "ToDoCategory"
+        
+        // REQUEST
+         let identifier = title
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: dateTrigger)
+        center.add(request) { (error) in
+            if error != nil {
+                print("Something wrong")
+            }
+        }
+    }
+
+}
 
 

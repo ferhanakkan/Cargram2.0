@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         firebase(application)
         setKeyboard()
         autoLogIn()
+        setLocalePushNotification()
         
         if #available(iOS 12.0, *) {
             self.window = UIWindow(frame: UIScreen.main.bounds)
