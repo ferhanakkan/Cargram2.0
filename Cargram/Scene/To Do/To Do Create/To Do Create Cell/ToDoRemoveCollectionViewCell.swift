@@ -43,10 +43,10 @@ final class ToDoRemoveCollectionViewCell: UICollectionViewCell {
         deleteButton.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(5)
             make.trailing.equalToSuperview().inset(5)
-            make.height.width.equalTo(40)
+            make.height.width.equalTo(26)
         }
         
-        deleteButton.layer.cornerRadius = 20
+        deleteButton.layer.cornerRadius = 13
         deleteButton.addTarget(self, action: #selector(deletePressed), for: .touchUpInside)
     }
     

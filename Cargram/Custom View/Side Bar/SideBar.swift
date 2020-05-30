@@ -18,8 +18,8 @@ protocol SidebarViewDelegate: class {
 enum Row: String {
     case editProfile
     case settings
-    case vin
-    case carDetail
+//    case vin
+//    case carDetail
     case rate
     case donate
     case signOut
@@ -29,11 +29,11 @@ enum Row: String {
         switch row {
         case 0: self = .editProfile
         case 1: self = .settings
-        case 2: self = .carDetail
-        case 3: self = .vin
-        case 4: self = .rate
-        case 5: self = .donate
-        case 6: self = .signOut
+//        case 2: self = .carDetail
+//        case 3: self = .vin
+        case 2: self = .rate
+        case 3: self = .donate
+        case 4: self = .signOut
         default: self = .none
         }
     }
@@ -58,8 +58,8 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.backgroundColor = .backgroundGreen
         self.clipsToBounds=true
         
-        titleArr = ["\(Auth.auth().currentUser?.displayName! ?? "Profile")","Settings","Car Details", "Vin Code","Rate Us", "Donate", "Sign Out"]
-        imageNameArray = ["Settings","car","vincode","rate","donate","signOut"]
+        titleArr = ["\(Auth.auth().currentUser?.displayName! ?? "Profile")","Settings","Rate Us", "Donate", "Sign Out"]
+        imageNameArray = ["Settings","rate","donate","signOut"]
         setupViews()
         
         myTableView.delegate=self

@@ -33,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         return true
     }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
 
     // MARK: UISceneSession Lifecycle
 
@@ -51,18 +54,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func selectRoot() {
-     /*   let currentUser = Auth.auth().currentUser
         if let rememberMe = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
-            if currentUser != nil && rememberMe {
-                window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
-            } else {
-                window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
+            if !rememberMe {
+                UserDefaults.standard.setValue(nil, forKey: "profileImage")
+                UserDefaults.standard.setValue(nil, forKey: "rememberMe")
+                let firebaseAuth = Auth.auth()
+                do {
+                    try firebaseAuth.signOut()
+                } catch let signOutError as NSError {
+                    print ("Error signing out: %@", signOutError)
+                    LoadingView.hide()
+                }
             }
-            
-        } else {
-            window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
-        }*/
-        
+        }
         window?.rootViewController = Tabbar.createTabBarWithNavigationBar()
     }
 
@@ -72,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func autoLogIn() {
-                
+        
         if let rememberData = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
             if !rememberData {
                 let firebaseAuth = Auth.auth()

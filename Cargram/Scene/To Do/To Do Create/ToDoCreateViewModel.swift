@@ -25,7 +25,7 @@ final class ToDoCreateViewModel {
     }
     
     var center = UNUserNotificationCenter.current()
-
+    
     
     func createTopic(title: String, subTitle: String, selectedDate: Date? = nil, completion: @escaping(Bool) -> Void) {
         if title != "" && subTitle != "" {
@@ -93,7 +93,7 @@ final class ToDoCreateViewModel {
             let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "ToDoAddCollectionViewCell", for: indexPath) as! ToDoAddCollectionViewCell
             cell.delegate = owner
             return cell
-
+            
         }
     }
 }
@@ -156,7 +156,7 @@ extension ToDoCreateViewModel {
     private func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-        
+    
 }
 
 
@@ -168,32 +168,28 @@ extension ToDoCreateViewModel {
         // CONTENT
         let content = UNMutableNotificationContent()
         content.title = "Did You Finish Your To Do Which is :"
-//        content.subtitle = "Bildirimin altbaşlığı"
+        //        content.subtitle = "Bildirimin altbaşlığı"
         content.body = "\(title)"
         content.sound = UNNotificationSound.default // bildirimin sesi
-        content.badge = NSNumber(value: 0)
+        content.badge = NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + 1)
         
         // TRIGGER
         
-        // Define Action
-        let snoozeAction = UNNotificationAction(identifier: "Snooze", title: "Snooze", options: [])
-        let deleteAction = UNNotificationAction(identifier: "DeleteAction", title: "Delete", options: [.destructive])
-        
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
+        //        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
         
         let date = Date(timeIntervalSince1970: time)
         let triggerDate = Calendar.current.dateComponents([.year,.month, .day, .hour, .hour, .minute, .second], from: date)
         let dateTrigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
         
         //Create Category
-        let category = UNNotificationCategory(identifier: "ToDoCategory", actions: [snoozeAction,deleteAction], intentIdentifiers: [], options: [])
+        let category = UNNotificationCategory(identifier: "ToDoCategory", actions: [], intentIdentifiers: [], options: [])
         
         // Register Category
         center.setNotificationCategories([category])
         content.categoryIdentifier = "ToDoCategory"
         
         // REQUEST
-         let identifier = title
+        let identifier = title
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: dateTrigger)
         center.add(request) { (error) in
             if error != nil {
@@ -201,7 +197,7 @@ extension ToDoCreateViewModel {
             }
         }
     }
-
+    
 }
 
 

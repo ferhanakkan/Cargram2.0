@@ -115,10 +115,10 @@ extension BaseViewController: SidebarViewDelegate {
             }
         case .rate:
             SKStoreReviewController.requestReview()
-        case .vin:
-            print("Vin is coming")
-        case .carDetail:
-            print("car detail")
+//        case .vin:
+//            print("Vin is coming")
+//        case .carDetail:
+//            print("car detail")
         case .donate:
             let vc = DonateViewController()
             vc.modalPresentationStyle = .overFullScreen

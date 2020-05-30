@@ -14,6 +14,7 @@ final class CategoryTopicsViewModel {
     lazy var topicsModel: [TopicsModel] = []
     
     func getSelectedTopicDatas(completion: @escaping(Bool) -> Void) {
+        LoadingView.show()
         firebase.getTopics { (response) in
             self.topicsModel.removeAll()
             self.topicsModel = response

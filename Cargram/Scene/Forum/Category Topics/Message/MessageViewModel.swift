@@ -15,6 +15,7 @@ class MessageViewModel {
     lazy var messageModel: [MessageModel] = []
     
     func getMessage() {
+        LoadingView.show()
         firebase.getSelectedTopicMessage { (response) in
             self.messageModel.removeAll()
             self.messageModel = response

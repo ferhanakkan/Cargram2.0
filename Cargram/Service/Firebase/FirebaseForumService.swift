@@ -20,8 +20,10 @@ final class FirebaseForumService {
         
         storage.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if let error = error {
+                LoadingView.hide()
                 AppManager.shared.messagePresent(title: "OOPS", message: error.localizedDescription , type: .error, isInternet: .nonInternetAlert)
             } else {
+                LoadingView.hide()
                 completion(data!)
             }
         }
@@ -32,6 +34,7 @@ final class FirebaseForumService {
         fireStoreDatabase.collection("Topics").document("Data").collection(AppManager.shared.selectedForumCategory).addSnapshotListener { (snapshot, error) in
             if error != nil {
                 AppManager.shared.messagePresent(title: "OOPS", message: error!.localizedDescription , type: .error, isInternet: .nonInternetAlert)
+                LoadingView.hide()
             } else {
                 if snapshot?.isEmpty != true && snapshot != nil {
                     self.topicsArray.removeAll()
@@ -42,6 +45,7 @@ final class FirebaseForumService {
                         }
                     }
                     DispatchQueue.main.async {
+                        LoadingView.hide()
                         completion(self.topicsArray)
                     }
                 }
@@ -65,14 +69,17 @@ final class FirebaseForumService {
         ]
         fireStoreDatabase.collection("TopicDatas").document("Data").collection(AppManager.shared.selectedForumCategory).document(title).collection("Message").addDocument(data: docData) { err in
             if let err = err {
+                LoadingView.hide()
                 AppManager.shared.messagePresent(title: "OOPS", message: err.localizedDescription , type: .error, isInternet: .nonInternetAlert)
             }
         }
         fireStoreDatabase.collection("Topics").document("Data").collection(AppManager.shared.selectedForumCategory).document(title).setData(docData) { err in
             if let err = err {
+                LoadingView.hide()
                 AppManager.shared.messagePresent(title: "OOPS", message: err.localizedDescription , type: .error, isInternet: .nonInternetAlert)
             } else {
                 DispatchQueue.main.async {
+                    LoadingView.hide()
                     completion(true)
                 }
             }
@@ -84,6 +91,7 @@ final class FirebaseForumService {
         let fireStoreDatabase = Firestore.firestore()
         fireStoreDatabase.collection("TopicDatas").document("Data").collection(AppManager.shared.selectedForumCategory).document(AppManager.shared.selectedForumTopic).collection("Message").order(by: "Time").addSnapshotListener { (snapshot, error) in
             if error != nil {
+                LoadingView.hide()
                 AppManager.shared.messagePresent(title: "OOPS", message: error!.localizedDescription , type: .error, isInternet: .nonInternetAlert)
             } else {
                 if snapshot?.isEmpty != true && snapshot != nil {
@@ -97,6 +105,7 @@ final class FirebaseForumService {
                     DispatchQueue.main.async {
                         completion(self.messageArray)
                         self.delegate?.messageFetched()
+                        LoadingView.hide()
                         if !self.messageArray.isEmpty {
                             self.delegate?.scrollToLastMessage(toRow: self.messageArray.count-1)
                            

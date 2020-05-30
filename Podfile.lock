@@ -221,6 +221,8 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
   - Fabric (1.10.2)
+  - Firebase (6.24.0):
+    - Firebase/Core (= 6.24.0)
   - Firebase/Analytics (6.24.0):
     - Firebase/Core
   - Firebase/Auth (6.24.0):
@@ -237,12 +239,19 @@ PODS:
   - Firebase/Firestore (6.24.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 1.13.0)
+  - Firebase/InAppMessaging (6.24.0):
+    - Firebase/CoreOnly
+    - FirebaseInAppMessaging (~> 0.20.0)
   - Firebase/Messaging (6.24.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 4.4.0)
   - Firebase/Storage (6.24.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 3.6.1)
+  - FirebaseABTesting (3.2.0):
+    - FirebaseAnalyticsInterop (~> 1.3)
+    - FirebaseCore (~> 6.1)
+    - Protobuf (>= 3.9.2, ~> 3.9)
   - FirebaseAnalytics (6.5.0):
     - FirebaseCore (~> 6.7)
     - FirebaseInstallations (~> 1.2)
@@ -292,6 +301,14 @@ PODS:
     - FirebaseCore (~> 6.2)
     - "gRPC-C++ (~> 1.28.0)"
     - leveldb-library (~> 1.22)
+    - nanopb (~> 1.30905.0)
+  - FirebaseInAppMessaging (0.20.0):
+    - FirebaseABTesting (~> 3.2)
+    - FirebaseAnalyticsInterop (~> 1.3)
+    - FirebaseCore (~> 6.2)
+    - FirebaseInstallations (~> 1.1)
+    - GoogleDataTransportCCTSupport (~> 3.1)
+    - GoogleUtilities/Environment (~> 6.5)
     - nanopb (~> 1.30905.0)
   - FirebaseInstallations (1.2.0):
     - FirebaseCore (~> 6.6)
@@ -402,11 +419,13 @@ DEPENDENCIES:
   - Alamofire (= 5.0.0-rc.2)
   - BEMCheckBox
   - Fabric (~> 1.10.2)
+  - Firebase
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Crashlytics
   - Firebase/Firestore
+  - Firebase/InAppMessaging
   - Firebase/Messaging
   - Firebase/Storage
   - IQKeyboardManagerSwift (= 6.5.0)
@@ -423,6 +442,7 @@ SPEC REPOS:
     - BoringSSL-GRPC
     - Fabric
     - Firebase
+    - FirebaseABTesting
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
     - FirebaseAuth
@@ -432,6 +452,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnosticsInterop
     - FirebaseCrashlytics
     - FirebaseFirestore
+    - FirebaseInAppMessaging
     - FirebaseInstallations
     - FirebaseInstanceID
     - FirebaseMessaging
@@ -461,6 +482,7 @@ SPEC CHECKSUMS:
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   Firebase: b28e55c60efd98963cd9011fe2fac5a10c2ba124
+  FirebaseABTesting: 821a3a3e4a145987e80fee3657c4de1cb9adf693
   FirebaseAnalytics: 7386fc2176e3f93ad8ef34b5b1f2b33a891e4962
   FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
   FirebaseAuth: 7047aec89c0b17ecd924a550c853f0c27ac6015e
@@ -470,6 +492,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
   FirebaseCrashlytics: fff345f16a07f0b23cb342d8de5a42cec6de3492
   FirebaseFirestore: 35f8f67d7b25e4743c62ea6e46c38cafa8dc32b5
+  FirebaseInAppMessaging: 080e20148820a7fda37bdb0aa0fb85021124ece4
   FirebaseInstallations: 2119fb3e46b0a88bfdbf12562f855ee3252462fa
   FirebaseInstanceID: cef67c4967c7cecb56ea65d8acbb4834825c587b
   FirebaseMessaging: 58cb17277641a0084d98d4951ba1f1fb0588c8c6
@@ -492,6 +515,6 @@ SPEC CHECKSUMS:
   RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: f4eb25c14c550ba36f7162c0ee8c3b7750297423
+PODFILE CHECKSUM: b443d6e5423e2b60e6777aae17ab5d4a93eca819
 
 COCOAPODS: 1.9.1

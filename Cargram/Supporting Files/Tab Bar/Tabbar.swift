@@ -21,8 +21,8 @@ class Tabbar {
         if Auth.auth().currentUser != nil {
             
             let explore = ExploreViewController()
-            let meeting = TestScreenViewController()
-            let posts = ToDoDetailImageShowViewController()
+            let meeting = ShowEventViewController()
+            let posts = FlowCollectionViewController()
             let todo = ToDoViewController()
             let forum = ForumViewController()
             
@@ -63,11 +63,11 @@ class Tabbar {
             todo.title = "To Do"
             forum.title = "Forum"
             
-            tabController.viewControllers = [UINavigationController(rootViewController: explore),UINavigationController(rootViewController: meeting),UINavigationController(rootViewController: posts),UINavigationController(rootViewController: todo),UINavigationController(rootViewController: forum)]
+            tabController.viewControllers = [UINavigationController(rootViewController: explore),meeting,posts,UINavigationController(rootViewController: todo),forum]
             
             tabController.tabBar.backgroundColor = .backgroundGreen
-            tabController.tabBar.barTintColor = .backgroundGreen
-            tabController.tabBar.tintColor = .darkGray
+            tabController.tabBar.barTintColor = .red
+            tabController.tabBar.tintColor = .orange
             
             tabController.tabBar.items?[0].image = UIImage(named: "explore")
             tabController.tabBar.items![0].selectedImage = UIImage(named: "explore")

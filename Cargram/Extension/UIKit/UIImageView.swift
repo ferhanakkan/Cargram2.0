@@ -16,4 +16,15 @@ extension UIImageView {
         layer.cornerRadius = CGFloat(cornerRadius)
         layer.masksToBounds=true
     }
+    
+    func animate( images: [UIImage]) {
+        isHidden = false
+        animationImages = images
+        animationDuration = 1.0
+        animationRepeatCount = 1
+        startAnimating()
+        DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+            self.isHidden = true
+        }
+    }
 }
