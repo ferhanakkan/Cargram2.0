@@ -19,6 +19,8 @@ target 'Cargram' do
    pod 'Firebase'
    pod 'Firebase/InAppMessaging'
    pod 'Fabric', '~> 1.10.2'
+   pod 'GoogleMaps'
+   pod 'GooglePlaces'
    pod 'Firebase/Crashlytics'
    pod 'BEMCheckBox'
   # Pods for Cargram

@@ -129,7 +129,7 @@ extension RegisterColletionViewCell {
             make.leading.equalTo(rememberLabel.snp.trailing).offset(10)
         }
         checkBox.onTintColor = .orange
-        checkBox.onCheckColor = .red
+        checkBox.onCheckColor = .orange
     }
     
     private func setRegisterButton() {
@@ -177,7 +177,7 @@ extension RegisterColletionViewCell {
             make.width.equalTo(60)
         }
         logInButton.setTitle("Log In", for: .normal)
-        logInButton.setTitleColor(.darkGray, for: .normal)
+        logInButton.setTitleColor(.orange, for: .normal)
         logInButton.addTarget(self, action: #selector(logInPressed), for: .touchUpInside)
     }
 }

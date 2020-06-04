@@ -19,7 +19,7 @@ class ShowEventViewController: UIViewController {
         let tableView = UITableView()
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.backgroundColor = .white
-        tableView.register(LikeTableViewCell.self, forCellReuseIdentifier: "LikeTableViewCell")
+        tableView.register(UpcomingEventTableViewCell.self, forCellReuseIdentifier: "UpcomingEventTableViewCell")
         return tableView
     }()
     
@@ -92,6 +92,8 @@ extension ShowEventViewController {
             make.leading.trailing.equalToSuperview()
             (selectedType == .endedEvent) ?  (make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)) : nil
         }
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     private func setShowEventButton() {
@@ -103,6 +105,55 @@ extension ShowEventViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.top.equalTo(tableView.snp.bottom)
             make.height.equalTo(50)
+        }
+        showInMapButton.addTarget(self, action: #selector(showInMapPressed), for: .touchUpInside)
+    }
+    
+}
+
+//MARK: - Actions
+
+extension ShowEventViewController {
+    
+    @objc private func showInMapPressed() {
+        let vc = ShowMapViewController()
+        vc.mapViewModel.eventArray = showEventViewModel.eventArray
+        navigationController!.show(vc, sender: nil)
+    }
+    
+}
+
+//MARK: - TableView Delegate & Datasource
+
+extension ShowEventViewController: UITableViewDelegate , UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if showEventViewModel.eventArray.count == 0 {
+            return 1
+        } else {
+            return showEventViewModel.eventArray.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if showEventViewModel.eventArray.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UpcomingEventTableViewCell", for: indexPath) as! UpcomingEventTableViewCell
+            cell.titleLabel.text = "Sorry"
+            cell.descriptionLabel.text = "Doesn't have any event we are sorry :("
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UpcomingEventTableViewCell", for: indexPath) as! UpcomingEventTableViewCell
+            selectedType == .upComingEvent ? cell.accessoryType = .disclosureIndicator : nil
+            cell.eventModel = showEventViewModel.eventArray[indexPath.row]
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if selectedType == .upComingEvent {
+            let vc = ShowMapViewController()
+            vc.mapViewModel.eventArray.append(showEventViewModel.eventArray[indexPath.row])
+            navigationController?.show(vc, sender: nil)
         }
     }
     

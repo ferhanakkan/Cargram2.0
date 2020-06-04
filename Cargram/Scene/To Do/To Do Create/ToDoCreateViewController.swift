@@ -168,7 +168,6 @@ extension ToDoCreateViewController {
         let minDate = calendar.date(byAdding: comps, to: Date())
         datePicker.maximumDate = maxDate
         datePicker.minimumDate = minDate
-
     }
     
     private func setCancelButton() {

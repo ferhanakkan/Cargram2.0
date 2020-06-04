@@ -55,7 +55,7 @@ extension AuthViewController {
             make.height.equalTo(view.frame.height*0.6)
         }
         backgroundView.roundCornersEachCorner([.bottomLeft, .bottomRight], radius: 20)
-        backgroundView.backgroundColor = .gray
+        backgroundView.backgroundColor = .orange
     }
     
     private func setImageView() {
@@ -65,7 +65,8 @@ extension AuthViewController {
             make.height.width.equalTo(70)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
         }
-        imageView.image = #imageLiteral(resourceName: "alert")
+        imageView.cornerRadius = 35
+        imageView.image = #imageLiteral(resourceName: "cargram")
     }
     
     private func setCollectionView() {

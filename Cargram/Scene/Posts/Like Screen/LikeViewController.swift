@@ -51,6 +51,8 @@ extension LikeViewController {
         
         topView.addSubview(doneButton)
         doneButton.setTitle("Done", for: .normal)
+        doneButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        doneButton.setTitleColor(.orange, for: .normal)
         doneButton.isUserInteractionEnabled = true
         doneButton.addTarget(self, action: #selector(donePressed), for: .touchUpInside)
         

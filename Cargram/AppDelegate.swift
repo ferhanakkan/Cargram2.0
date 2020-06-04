@@ -9,6 +9,8 @@
 import UIKit
 import IQKeyboardManagerSwift
 import Firebase
+import GoogleMaps
+import GooglePlaces
 
 
 @UIApplicationMain
@@ -24,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setKeyboard()
         autoLogIn()
         setLocalePushNotification()
+        setGoogleMaps()
         
         if #available(iOS 12.0, *) {
             self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -37,7 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
-    // MARK: UISceneSession Lifecycle
 
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -45,14 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
-    @available(iOS 13.0, *)
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-
+    
     private func selectRoot() {
         if let rememberMe = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
             if !rememberMe {
@@ -87,6 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
+    }
+    
+    private func setGoogleMaps() {
+        GMSServices.provideAPIKey("AIzaSyBuyjzjaSIWSART-mYxcDujXkOa29ZXEmE")
+        GMSPlacesClient.provideAPIKey("AIzaSyBuyjzjaSIWSART-mYxcDujXkOa29ZXEmE")
     }
 }
 

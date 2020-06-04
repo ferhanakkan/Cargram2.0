@@ -14,7 +14,7 @@ final class NewPostViewController: UIViewController {
     let imageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
-        image.image = UIImage(named: "avatar")
+        image.image = UIImage(named: "selectImage")
         return image
     }()
     
@@ -27,8 +27,8 @@ final class NewPostViewController: UIViewController {
     
     let sendButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Upload", for: .normal)
-        button.setMyButton(title: "Upload", color: .black, background: .darkGray, borderColor: .black)
+        button.setMyButton(title: "Upload", color: .white, background: .darkGray, borderColor: .orange)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         return button
     }()
     

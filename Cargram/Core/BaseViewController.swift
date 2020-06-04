@@ -27,8 +27,9 @@ class BaseViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.tintColor = .gray
-        navigationController?.navigationBar.barTintColor = .backgroundGreen
+        navigationController?.navigationBar.tintColor = .orange
+        navigationController?.navigationBar.barTintColor = .darkGray
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.orange]
         imageSetter()
         sidebarView=SidebarView(frame: CGRect(x: 0, y: 0, width: 0, height: self.view.frame.height))
         sidebarView.delegate=self
@@ -80,7 +81,7 @@ class BaseViewController: UIViewController  {
         button.cornerRadius = 15
         button.layer.borderWidth = 2
         button.layer.masksToBounds = false
-        button.layer.borderColor = UIColor.gray.cgColor
+        button.layer.borderColor = UIColor.orange.cgColor
         button.clipsToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: 30).isActive = true

@@ -121,7 +121,7 @@ extension ForgotColletionViewCell {
             make.centerY.equalTo(bottomLabel.snp.centerY)
             make.width.equalTo(50)
         }
-        logInButton.setTitleColor(.gray, for: .normal)
+        logInButton.setTitleColor(.orange, for: .normal)
         logInButton.setTitle("Log In", for: .normal)
         logInButton.addTarget(self, action: #selector(logInButtonPressed), for: .touchUpInside)
     }

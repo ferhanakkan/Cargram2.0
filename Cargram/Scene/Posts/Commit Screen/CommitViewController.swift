@@ -56,6 +56,8 @@ extension CommitViewController {
         
         topView.addSubview(doneButton)
         doneButton.setTitle("Done", for: .normal)
+        doneButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        doneButton.setTitleColor(.orange, for: .normal)
         doneButton.isUserInteractionEnabled = true
         doneButton.addTarget(self, action: #selector(donePressed), for: .touchUpInside)
         
@@ -79,7 +81,7 @@ extension CommitViewController {
     
     private func setSenderView() {
         
-        customView.backgroundColor = .backgroundGreen
+        customView.backgroundColor = .gray
         view.addSubview(customView)
         
         customView.snp.makeConstraints { (make) in

@@ -118,7 +118,7 @@ extension LogInColletionViewCell {
             make.leading.equalTo(rememberLabel.snp.trailing).offset(10)
         }
         checkBox.onTintColor = .orange
-        checkBox.onCheckColor = .red
+        checkBox.onCheckColor = .orange
     }
     
     private func setResetPasswordButton() {
@@ -130,7 +130,7 @@ extension LogInColletionViewCell {
             make.height.equalTo(40)
             make.width.equalTo(140)
         }
-        resetPasswordButton.setTitleColor(.gray, for: .normal)
+        resetPasswordButton.setTitleColor(.orange, for: .normal)
         resetPasswordButton.setTitle("Reset Password", for: .normal)
         resetPasswordButton.addTarget(self, action: #selector(resetPasswordPressed), for: .touchUpInside)
     }
@@ -179,7 +179,7 @@ extension LogInColletionViewCell {
             make.width.equalTo(80)
         }
         registerButton.setTitle("Register", for: .normal)
-        registerButton.setTitleColor(.darkGray, for: .normal)
+        registerButton.setTitleColor(.orange, for: .normal)
         registerButton.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
     }
 }

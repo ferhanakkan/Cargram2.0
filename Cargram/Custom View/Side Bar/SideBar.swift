@@ -55,7 +55,8 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .backgroundGreen
+        
+        self.backgroundColor = .gray
         self.clipsToBounds=true
         
         titleArr = ["\(Auth.auth().currentUser?.displayName! ?? "Profile")","Settings","Rate Us", "Donate", "Sign Out"]
@@ -93,11 +94,11 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
         if indexPath.row == 0 {
-            cell.backgroundColor = .backgroundGreen
+            cell.backgroundColor = .gray
             
             let cellImg: UIImageView!
             cellImg = UIImageView(frame: CGRect(x: 15, y: 10, width: 80, height: 80))
-            cellImg.makeRoundWithBorder(borderColor: .gray, borderWidth: 3, cornerRadius: 40)
+            cellImg.makeRoundWithBorder(borderColor: .orange, borderWidth: 3, cornerRadius: 40)
             cellImg.contentMode = .scaleAspectFill
             DispatchQueue.main.async {
                if let data = UserDefaults.standard.value(forKey: "profileImage") as? Data{
@@ -112,10 +113,10 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
             let cellLbl = UILabel(frame: CGRect(x: 110, y: cell.frame.height/2-15, width: 250, height: 30))
             cell.addSubview(cellLbl)
             cellLbl.text = titleArr[indexPath.row]
-            cellLbl.font=UIFont.systemFont(ofSize: 17)
-            cellLbl.textColor=UIColor.gray
+            cellLbl.font = UIFont.boldSystemFont(ofSize: 17)
+            cellLbl.textColor=UIColor.orange
         } else {
-            cell.backgroundColor = .backgroundGreen
+            cell.backgroundColor = .gray
             
             let cellImg: UIImageView!
             cellImg = UIImageView(frame: CGRect(x: 15, y: cell.frame.height/2-15, width: 30, height: 30))
@@ -126,8 +127,9 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
             let cellLbl = UILabel(frame: CGRect(x: 55, y: cell.frame.height/2-15, width: 250, height: 30))
             cell.addSubview(cellLbl)
             cellLbl.text = titleArr[indexPath.row]
-            cellLbl.font=UIFont.systemFont(ofSize: 17)
-            cellLbl.textColor=UIColor.gray        }
+            cellLbl.font = UIFont.boldSystemFont(ofSize: 17)
+            cellLbl.textColor=UIColor.orange
+        }
         return cell
     }
     

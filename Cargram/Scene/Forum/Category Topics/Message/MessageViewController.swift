@@ -57,7 +57,7 @@ extension MessageViewController {
     
     internal func setSenderView() {
         
-        customView.backgroundColor = .backgroundGreen
+        customView.backgroundColor = .gray
         view.addSubview(customView)
         
         customView.snp.makeConstraints { (make) in
@@ -91,7 +91,7 @@ extension MessageViewController {
             make.top.equalToSuperview().offset(5)
         })
         
-        viewSafe.backgroundColor = .backgroundGreen
+        viewSafe.backgroundColor = .gray
         view.addSubview(viewSafe)
         
         viewSafe.snp.makeConstraints { (make) in
