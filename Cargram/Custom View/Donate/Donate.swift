@@ -224,17 +224,17 @@ class DonateViewController: UIViewController, SKPaymentTransactionObserver {
     
     @objc func donateOneSelection() {
         setDonationInteraction()
-        buyPremiumQuotes(productID: "com.ferhanakkan.BabyAssitant.coffee")
+        buyPremiumQuotes(productID: "com.ferhanakkan.Cargram.Coffee2")
     }
     
     @objc func donateFiveselection() {
         setDonationInteraction()
-        buyPremiumQuotes(productID: "com.ferhanakkan.BabyAssitant.Burger")
+        buyPremiumQuotes(productID: "com.ferhanakkan.Cargram.Burger2")
     }
     
     @objc func donateTenSelection() {
         setDonationInteraction()
-        buyPremiumQuotes(productID: "com.ferhanakkan.BabyAssitant.BurgerMenu")
+        buyPremiumQuotes(productID: "com.ferhanakkan.Cargram.BurgerMenu2")
     }
     
     @objc func dismissSelection() {

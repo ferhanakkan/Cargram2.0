@@ -111,9 +111,9 @@ extension FirebasePostService {
         let lastPost = postData.last
         let query: Query
         if lastPost == nil {
-            query = firestoreDatabase.collection("Posts").order(by: "timestamp",descending: true).limit(to: 2)
+            query = firestoreDatabase.collection("Posts").order(by: "timestamp",descending: true).limit(to: 10)
         } else {
-            query = firestoreDatabase.collection("Posts").order(by: "timestamp",descending: true).start(after: [lastPost!.date]).limit(to: 2)
+            query = firestoreDatabase.collection("Posts").order(by: "timestamp",descending: true).start(after: [lastPost!.date]).limit(to: 10)
         }
 
         query.getDocuments() { (querySnapshot, err) in

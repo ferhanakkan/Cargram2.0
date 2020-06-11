@@ -45,8 +45,8 @@ final class ExploreDetailCollectionViewCell: UICollectionViewCell {
         
         image.snp.makeConstraints { (make) in
             make.height.equalTo(200)
-            make.top.leading.equalToSuperview().offset(30)
-            make.trailing.equalToSuperview().offset(-30)
+            make.top.leading.equalToSuperview()
+            make.centerX.equalToSuperview()
         }
         
         title.snp.makeConstraints { (make) in

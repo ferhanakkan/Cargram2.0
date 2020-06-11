@@ -45,7 +45,7 @@ class UpcomingEventTableViewCell: UITableViewCell {
             if (eventModel!.timestamp - Double(Date().timeIntervalSince1970)) > 0 {
                 endLabel.text = Date(timeIntervalSince1970: eventModel!.timestamp).calenderTimeFromNow()
             } else {
-                endLabel.text = Date(timeIntervalSince1970: eventModel!.timestamp).calenderTimeSinceNow()
+                endLabel.text = "Ended \(Date(timeIntervalSince1970: eventModel!.timestamp).calenderTimeSinceNow())"
             }
         }
     }

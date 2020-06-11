@@ -32,6 +32,19 @@ final class MessageViewController: UIViewController {
         setUI()
         messaegeViewModel.getMessage()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        let button = UIButton()
+//        button.setImage(UIImage(named: "moreLow"), for: .normal)
+//        button.addTarget(self, action:#selector(moreButtonPressed), for: .touchUpInside)
+//        let barButton = UIBarButtonItem(customView: button)
+//        self.navigationItem.setRightBarButton(barButton, animated: true)
+        
+        let button = UIBarButtonItem(image: UIImage(named: "more"), style: .done, target: self, action: #selector(moreButtonPressed))
+        self.navigationItem.setRightBarButton(button, animated: true)
+    }
 }
 
 //MARK: - Setup UI
@@ -159,4 +172,35 @@ extension MessageViewController: MessageDidArrived {
             self.messageTextfield.text = ""
         }
     }
+    
+    @objc private func moreButtonPressed() {
+        let alert: UIAlertController = UIAlertController(title: "Chose what do you want to do ?", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Report", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            LoadingView.show()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                LoadingView.hide()
+                AppManager.shared.messagePresent(title: "Thanks", message: "We will inspect This topic to control is there anything banned.", type: .success, isInternet: .nonInternetAlert)
+            }
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+        }
+        
+        alert.addAction(cameraAction)
+        alert.addAction(cancelAction)
+
+        
+        let groundView = UIApplication.getPresentedViewController()!.view
+        
+        alert.popoverPresentationController?.sourceView = groundView!
+        alert.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection()
+        alert.popoverPresentationController?.sourceRect = CGRect(x: groundView!.bounds.midX, y: groundView!.bounds.midY, width: 0, height: 0)
+        UIApplication.getPresentedViewController()!.present(alert, animated: true)
+
+    }
+
 }

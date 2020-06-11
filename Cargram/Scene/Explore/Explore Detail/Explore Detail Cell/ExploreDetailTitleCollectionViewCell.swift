@@ -53,7 +53,7 @@ final class ExploreDetailTitleCollectionViewCell: UICollectionViewCell {
         subView.addSubview(title)
         
         image.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(UIScreen.main.bounds.height/3)
         }
         

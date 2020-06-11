@@ -33,8 +33,8 @@ final class FirebaseForumService {
         let fireStoreDatabase = Firestore.firestore()
         fireStoreDatabase.collection("Topics").document("Data").collection(AppManager.shared.selectedForumCategory).addSnapshotListener { (snapshot, error) in
             if error != nil {
-                AppManager.shared.messagePresent(title: "OOPS", message: error!.localizedDescription , type: .error, isInternet: .nonInternetAlert)
                 LoadingView.hide()
+                AppManager.shared.messagePresent(title: "OOPS", message: error!.localizedDescription , type: .error, isInternet: .nonInternetAlert)
             } else {
                 if snapshot?.isEmpty != true && snapshot != nil {
                     self.topicsArray.removeAll()
@@ -49,6 +49,7 @@ final class FirebaseForumService {
                         completion(self.topicsArray)
                     }
                 }
+                LoadingView.hide()
             }
         }
     }

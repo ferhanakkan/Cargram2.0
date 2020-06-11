@@ -57,9 +57,8 @@ final class FirebaseExploreService {
         fireStoreDatabase.collection("ExploreTopics").document(title).collection("Detail").addSnapshotListener { (snapshot, error) in
             if error != nil {
                 LoadingView.hide()
-                AppManager.shared.messagePresent(title: "OOPs", message: error!.localizedDescription, type: .error, isInternet: .nonInternetAlert)
-            } else {
-                if snapshot?.isEmpty != true && snapshot != nil {
+                AppManager.shared.messagePresent(title: "OOPS", message: error!.localizedDescription, type: .error, isInternet: .nonInternetAlert)
+            } else {                if snapshot?.isEmpty != true && snapshot != nil {
                     self.exploreArray.removeAll()
                     var index = 0
                     for document in snapshot!.documents {
@@ -92,6 +91,7 @@ final class FirebaseExploreService {
                             }
                         }
                     }
+                    LoadingView.hide()
                 }
             }
         }

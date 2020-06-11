@@ -66,14 +66,15 @@ extension NewPostViewModel {
         alert.addAction(cameraAction)
         alert.addAction(galleryAction)
         alert.addAction(cancelAction)
+
         
-        let device = UIDevice.current
+        let groundView = UIApplication.getPresentedViewController()!.view
         
-        if device.userInterfaceIdiom == .phone {
-            
-            owner.present(alert, animated: true, completion: nil)
-        }
-        
+        alert.popoverPresentationController?.sourceView = groundView!
+        alert.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection()
+        alert.popoverPresentationController?.sourceRect = CGRect(x: groundView!.bounds.midX, y: groundView!.bounds.midY, width: 0, height: 0)
+        UIApplication.getPresentedViewController()!.present(alert, animated: true)
+
     }
     
     private func openCamera(owner: NewPostViewController) {

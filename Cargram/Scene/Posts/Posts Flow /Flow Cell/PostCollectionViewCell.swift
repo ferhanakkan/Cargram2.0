@@ -29,6 +29,13 @@ final class PostCollectionViewCell: UICollectionViewCell {
         return title
     }()
     
+    let moreView: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.image = UIImage(named: "more")
+        return image
+    }()
+    
     let imageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
@@ -152,6 +159,7 @@ extension PostCollectionViewCell {
         setUsernameLabel()
         setImageView()
         setLikeAnimation()
+        setMore()
         setTrash()
         setLikeImageView()
         setCommitImageView()
@@ -205,12 +213,24 @@ extension PostCollectionViewCell {
         contentView.addSubview(deleteImageView)
         deleteImageView.snp.makeConstraints { (make) in
             make.centerY.equalTo(senderImageView.snp.centerY)
-            make.trailing.equalToSuperview().inset(10)
+            make.trailing.equalTo(moreView.snp.leading).offset(-10)
             make.height.width.equalTo(20)
         }
         let gest = UITapGestureRecognizer(target: self, action: #selector(deleteButtonPressed))
         deleteImageView.isUserInteractionEnabled = true
         deleteImageView.addGestureRecognizer(gest)
+    }
+    
+    private func setMore() {
+        contentView.addSubview(moreView)
+        moreView.snp.makeConstraints { (make) in
+            make.centerY.equalTo(senderImageView.snp.centerY)
+            make.trailing.equalToSuperview().inset(10)
+            make.height.width.equalTo(20)
+        }
+        let gest = UITapGestureRecognizer(target: self, action: #selector(moreButtonPressed))
+        moreView.isUserInteractionEnabled = true
+        moreView.addGestureRecognizer(gest)
     }
     
     private func setLikeImageView() {
@@ -288,6 +308,36 @@ extension PostCollectionViewCell {
 //MARK: - Actions
 
 extension PostCollectionViewCell {
+    
+    @objc private func moreButtonPressed() {
+        let alert: UIAlertController = UIAlertController(title: "Chose what do you want to do ?", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Report", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            LoadingView.show()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                LoadingView.hide()
+                AppManager.shared.messagePresent(title: "Thanks", message: "We will inspect the post to control is there anything banned.", type: .success, isInternet: .nonInternetAlert)
+            }
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+        }
+        
+        alert.addAction(cameraAction)
+        alert.addAction(cancelAction)
+
+        
+        let groundView = UIApplication.getPresentedViewController()!.view
+        
+        alert.popoverPresentationController?.sourceView = groundView!
+        alert.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection()
+        alert.popoverPresentationController?.sourceRect = CGRect(x: groundView!.bounds.midX, y: groundView!.bounds.midY, width: 0, height: 0)
+        UIApplication.getPresentedViewController()!.present(alert, animated: true)
+
+    }
     
     
     @objc private func imageDoubleTap() {

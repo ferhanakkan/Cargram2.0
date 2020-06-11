@@ -34,6 +34,8 @@ class ShowMapViewController: UIViewController {
                 createPickerCard(coordinate: cll2d, id: counter)
                 counter += 1
             }
+            
+            mapView.camera = GMSCameraPosition(latitude: mapViewModel.eventArray[0].latitude, longitude: mapViewModel.eventArray[0].longitude, zoom: 13.0)
         }
     }
 }
@@ -146,8 +148,6 @@ extension ShowMapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        let camera = GMSCameraPosition.camera(withLatitude: locValue.latitude, longitude: locValue.longitude, zoom: 15.0)
-            mapView.camera = camera
         locationManager.stopUpdatingLocation()
     }
     
