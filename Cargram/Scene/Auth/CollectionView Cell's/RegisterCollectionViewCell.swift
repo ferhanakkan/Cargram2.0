@@ -18,6 +18,8 @@ class RegisterColletionViewCell: UICollectionViewCell {
     let passwordInput = UITextField()
     let eyeButton = UIButton()
     let usernameInput = UITextField()
+    let userAgreementLabel = UILabel()
+    let userAgreementCheckBox = BEMCheckBox()
     let rememberLabel = UILabel()
     let checkBox = BEMCheckBox()
     let registerButton = UIButton()
@@ -36,6 +38,8 @@ class RegisterColletionViewCell: UICollectionViewCell {
         setPasswordInput()
         setEye()
         setUsernameInput()
+        setuserAgremmentLabel()
+        setUserAgrementCheckBox()
         setRememberLabel()
         setCheckBox()
         setRegisterButton()
@@ -111,10 +115,35 @@ extension RegisterColletionViewCell {
         usernameInput.borderStyle = .roundedRect
     }
     
+    private func setuserAgremmentLabel() {
+        mainView.addSubview(userAgreementLabel)
+        userAgreementLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(usernameInput.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(20)
+            make.height.equalTo(40)
+        }
+        userAgreementLabel.text = "User Agreements"
+        userAgreementLabel.textColor = .systemBlue
+        let gest = UITapGestureRecognizer(target: self, action: #selector(userAgreementPressed))
+        userAgreementLabel.addGestureRecognizer(gest)
+        userAgreementLabel.isUserInteractionEnabled = true
+    }
+    
+    private func setUserAgrementCheckBox() {
+        mainView.addSubview(userAgreementCheckBox)
+        userAgreementCheckBox.snp.makeConstraints { (make) in
+            make.height.width.equalTo(15)
+            make.centerY.equalTo(userAgreementLabel)
+            make.leading.equalTo(userAgreementLabel.snp.trailing).offset(10)
+        }
+        userAgreementCheckBox.onTintColor = .orange
+        userAgreementCheckBox.onCheckColor = .orange
+    }
+    
     private func setRememberLabel() {
         mainView.addSubview(rememberLabel)
         rememberLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(usernameInput.snp.bottom).offset(20)
+            make.top.equalTo(userAgreementLabel.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(20)
             make.height.equalTo(40)
         }
@@ -186,12 +215,18 @@ extension RegisterColletionViewCell {
 
 extension RegisterColletionViewCell {
     
+    @objc private func userAgreementPressed() {
+       let vc = UserAgreementViewController()
+        UIApplication.getPresentedViewController()!.present(vc, animated: true)
+    }
+    
     @objc private func logInPressed() {
         delegate?.selectedCollectionViewIndex(row: 1)
     }
     
     @objc private func registerButtonPressed() {
         rememberMeSetter()
+        if userAgreementCheckBox.on {
         if emailInput.text == "" || passwordInput.text == "" || usernameInput.text == "" {
             AppManager.shared.messagePresent(title: "OOOPS", message: "Please enter your E-mail or Password please", type: .error, isInternet: .nonInternetAlert)
         } else {
@@ -199,6 +234,9 @@ extension RegisterColletionViewCell {
             firebase.createUser(email: emailInput.text!, password: passwordInput.text!, username: usernameInput.text!) { (_) in
                 self.window?.rootViewController = Tabbar.createTabBarWithNavigationBar()
             }
+        }
+        } else {
+            AppManager.shared.messagePresent(title: "OOPs", message: "To be registered you have to accept user agreements", type: .error, isInternet: .nonInternetAlert)
         }
     }
     
